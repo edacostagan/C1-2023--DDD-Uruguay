@@ -18,7 +18,7 @@ export class EmployeeEventsController{
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
-        console.log('Context: ', context)
+        console.log('Context: ', context.getTopic())
         console.log('--------------------------------------')
 
     }
@@ -31,7 +31,7 @@ export class EmployeeEventsController{
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
-        console.log('Context: ', context)
+        console.log('Context: ', context.getTopic())
         console.log('--------------------------------------')
 
     }
@@ -57,12 +57,11 @@ export class EmployeeEventsController{
      * @param {*} data
      * @memberof RoleEventsController
      */
-       private async registerEvent(sender: string, data: any) {
-        const event = new EventMySqlEntity();
-
+       private async registerEvent(sender: string, data: string) {
+        let event = new EventMySqlEntity();
         event.data = data;
         event.type = sender;
-        event.createdAt = Date.now() as unknown as string;
+        event.createdAt = new Date();
 
         await this.eventRepository.create(event);
     }

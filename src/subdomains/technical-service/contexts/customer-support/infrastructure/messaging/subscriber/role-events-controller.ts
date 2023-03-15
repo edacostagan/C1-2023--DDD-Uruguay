@@ -48,12 +48,11 @@ export class RoleEventsController{
      * @param {*} data
      * @memberof RoleEventsController
      */
-     private registerEvent(sender: string, data: any) {
-        const event = new EventMySqlEntity();
-
+     private registerEvent(sender: string, data: string) {
+        let event = new EventMySqlEntity();
         event.data = data;
         event.type = sender;
-        event.createdAt = Date.now() as unknown as string;
+        event.createdAt = new Date();
 
         this.eventRepository.create(event);
     }
