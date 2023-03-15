@@ -56,7 +56,7 @@ export class InvoiceController {
     @Post('/add-warranty')
     async addWarranty(@Body() command: AddWarrantyCommand) {
         const useCase = new AddWarrantyUseCase(
-            this.warrantyService,
+            this.invoiceService,//this.warrantyService,
             this.warrantyAddedEventPublisherBase,
         );
         return await useCase.execute(command);

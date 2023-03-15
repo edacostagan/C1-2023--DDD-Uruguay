@@ -16,7 +16,7 @@ export class RoleMySqlEntity extends RoleDomainEntityBase{
     @CreateDateColumn()
     createdAt?: Date;
 
-    @UpdateDateColumn()   
+    @Column({default:null})   
     updatedAt?: Date;    
 
     @DeleteDateColumn()

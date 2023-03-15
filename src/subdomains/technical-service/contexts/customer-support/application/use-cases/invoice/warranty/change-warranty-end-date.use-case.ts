@@ -121,7 +121,7 @@ export class ChangeWarrantyEndDateUseCase<
 
         return new WarrantyDomainEntityBase ({
             warrantyID: warrantyID.valueOf(),
-            endDate: endDate.valueOf()
+            endDate: endDate.valueOf() as Date
         })
     }
 

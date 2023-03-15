@@ -8,9 +8,9 @@ export class RoleDomainEntityBase implements IRoleDomainEntity {
     roleID?: string | UUIDValueObject;
     roleName?: string | RoleValueObject;
     roleDescription?: string | NoteValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 
     constructor(_data?: IRoleDomainEntity) {
 
@@ -21,6 +21,6 @@ export class RoleDomainEntityBase implements IRoleDomainEntity {
 
         if(_data?.roleDescription) this.roleDescription = _data.roleDescription;
 
-        this.createdAt = Date.now();
+        this.createdAt = new Date();
     }
 }

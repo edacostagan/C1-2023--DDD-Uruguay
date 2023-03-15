@@ -2,12 +2,12 @@ import { ValueObjectErrorHandler, IUseCase, ValueObjectException } from '@sofka'
 
 import { IWarrantyAdded as IWarrantyAddedResponse, IAddWarrantyCommand } from '../../../domain/interfaces';
 import { InvoiceAggregate } from '../../../domain/aggregates/Invoice/invoice.aggregate';
-import { IWarrantyDomainService } from '../../../domain/services/invoice/warranty.domain-service';
 import { WarrantyAddedEventPublisherBase } from '../../../domain/events/publishers/invoice/warranty-added.event-publisher';
 import { IWarrantyDomainEntity } from '../../../domain/entities/interfaces/invoice/warranty.domain-entity.interface';
 import { DateValueObject } from '../../../domain/value-objects/common/date/date.value-object';
 import { WarrantyStatusValueObject } from '../../../domain/value-objects/warranty/warranty-status.value-object';
 import { WarrantyDomainEntityBase } from '../../../domain/entities/invoice/warranty.domain-entity/warranty.domain-entity';
+import { IInvoiceDomainService } from '../../../domain/services';
 
 
 export class AddWarrantyUseCase<
@@ -18,12 +18,14 @@ export class AddWarrantyUseCase<
     private readonly invoiceAggregateRoot: InvoiceAggregate;
 
     constructor(
-        private readonly warrantyService: IWarrantyDomainService,
+        //private readonly warrantyService: IWarrantyDomainService,
+        private readonly invoiceService: IInvoiceDomainService,
         private readonly warrantyAddedEventPublisherBase: WarrantyAddedEventPublisherBase
     ) {
         super();
         this.invoiceAggregateRoot = new InvoiceAggregate({
-            warrantyService,
+            //warrantyService,
+            invoiceService,
             warrantyAddedEventPublisherBase
         })
     }
@@ -125,8 +127,8 @@ export class AddWarrantyUseCase<
         } = VO;
 
         return new WarrantyDomainEntityBase({
-            startDate: startDate.valueOf(),
-            endDate: endDate.valueOf(),            
+            startDate: startDate.valueOf() as Date,
+            endDate: endDate.valueOf() as Date,            
             warrantyStatus: warrantyStatus
         })
         

@@ -13,7 +13,7 @@ export class WarrantyEventsController {
     @EventPattern('customer-support.warranty-end-date-changed')
     warrantyEndDateChanged(@Payload() data: any, @Ctx() context: KafkaContext) {
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -26,7 +26,7 @@ export class WarrantyEventsController {
     @EventPattern('customer-support.warranty-status-changed')
     warrantyStatusChanged(@Payload() data: any, @Ctx() context: KafkaContext) {
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)

@@ -10,12 +10,12 @@ export class WarrantyDomainEntityBase implements IWarrantyDomainEntity {
    
 
     warrantyID?: string | UUIDValueObject;
-    startDate?: number | Date | DateValueObject;
-    endDate?: number | Date | DateValueObject;    
+    startDate?: Date | DateValueObject;
+    endDate?: Date | DateValueObject;    
     warrantyStatus?: string | WarrantyStatusValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 
     constructor( _data?: IWarrantyDomainEntity){
         
@@ -28,6 +28,6 @@ export class WarrantyDomainEntityBase implements IWarrantyDomainEntity {
 
         if(_data?.warrantyStatus) this.warrantyStatus = _data.warrantyStatus;
 
-        this.createdAt = Date.now();
+        this.createdAt = new Date();
     }    
 }

@@ -16,7 +16,7 @@ export class CustomerEventsController{
     @EventPattern('customer-support.customer-phone-changed')
     customerPhoneChanged(@Payload() data: any, @Ctx() context: KafkaContext){
 
-      this.registerEvent(context.getTopic(), data);
+      this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -30,7 +30,7 @@ export class CustomerEventsController{
     customerEmailChanged(@Payload() data: any, @Ctx() context: KafkaContext){
 
        
-      this.registerEvent(context.getTopic(), data);
+      this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
 
         console.log('--------------------------------------')

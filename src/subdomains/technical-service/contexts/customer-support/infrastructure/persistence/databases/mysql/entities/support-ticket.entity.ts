@@ -28,7 +28,7 @@ export class SupportTicketMySqlEntity extends SupportTicketDomainEntityBase{
     @CreateDateColumn()
     createdAt?: Date;
 
-    @UpdateDateColumn()   
+    @Column({default:null})
     updatedAt?: Date;    
 
     @DeleteDateColumn()

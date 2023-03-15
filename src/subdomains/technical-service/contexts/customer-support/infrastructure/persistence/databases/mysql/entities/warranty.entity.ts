@@ -19,7 +19,7 @@ export class WarrantyMySqlEntity extends WarrantyDomainEntityBase{
     @CreateDateColumn()
     createdAt?: Date;
 
-    @UpdateDateColumn()   
+    @Column({default:null}) 
     updatedAt?: Date;    
 
     @DeleteDateColumn()

@@ -14,7 +14,7 @@ export class RoleEventsController{
     @EventPattern('customer-support.role-created')
     roleCreated(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -28,7 +28,7 @@ export class RoleEventsController{
     roleDescriptionChanged(@Payload() data: any, @Ctx() context: KafkaContext){
 
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)

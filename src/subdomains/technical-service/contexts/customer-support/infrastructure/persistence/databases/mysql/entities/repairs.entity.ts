@@ -19,7 +19,7 @@ export class RepairsMySqlEntity extends RepairsDomainEntityBase{
     @CreateDateColumn()
     createdAt?: Date;
 
-    @UpdateDateColumn()   
+    @Column({default:null}) 
     updatedAt?: Date;    
 
     @DeleteDateColumn()

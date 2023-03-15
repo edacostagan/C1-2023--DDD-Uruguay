@@ -2,7 +2,6 @@ import { ICreateCustomerCommand } from '../../../domain/interfaces/commands/invo
 import { ICustomerCreatedResponse } from '../../../domain/interfaces/responses/invoice/customer-created.response';
 
 import { InvoiceAggregate } from '../../../domain/aggregates/Invoice/invoice.aggregate';
-import { ICustomerDomainService } from '../../../domain/services/invoice/customer.domain-service';
 import { CustomerCreatedEventPublisherBase } from '../../../domain/events/publishers/invoice/customer-created.event-publisher';
 import { CustomerDomainEntityBase } from '../../../domain/entities/invoice/customer.domain-entity/customer.domain-entity';
 import { ICustomerDomainEntity } from '../../../domain/entities/interfaces/invoice/customer.domain-entity.interface';

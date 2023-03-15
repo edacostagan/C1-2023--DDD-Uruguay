@@ -14,7 +14,7 @@ export class RepairsEventsController {
     repairDetailsAdded(@Payload() data: any, @Ctx() context: KafkaContext) {
 
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -28,7 +28,7 @@ export class RepairsEventsController {
     @EventPattern('customer-support.work-status-changed')
     workStatusChanged(@Payload() data: any, @Ctx() context: KafkaContext) {
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)

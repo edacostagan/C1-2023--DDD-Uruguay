@@ -10,9 +10,9 @@ export class DeviceDomainEntityBase implements IDeviceDomainEntity {
     deviceID?: string | UUIDValueObject;
     deviceType?: string | DeviceTypeValueObject;
     issues?: string | IssueValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 
     constructor(_data?: IDeviceDomainEntity) {
 
@@ -23,6 +23,6 @@ export class DeviceDomainEntityBase implements IDeviceDomainEntity {
 
         if (_data?.issues) this.issues = _data.issues;
 
-        this.createdAt = Date.now();
+        this.createdAt = new Date();
     }
 }

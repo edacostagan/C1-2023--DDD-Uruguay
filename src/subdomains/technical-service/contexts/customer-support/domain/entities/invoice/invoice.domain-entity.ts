@@ -9,7 +9,7 @@ import { IInvoiceDomainEntity } from '../interfaces/invoice/invoice.domain-entit
 export class InvoiceDomainEntityBase implements IInvoiceDomainEntity {
 
     invoiceID?: string | UUIDValueObject;
-    dateEmitted?: number | Date | DateValueObject;
+    dateEmitted?: Date | DateValueObject;
     ticketID?: string | UUIDValueObject;
     customerID?: string | UUIDValueObject;
     invoiceAmount?: number | AmountValueObject;

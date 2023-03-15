@@ -4,7 +4,7 @@ import { AmountValueObject } from '../../../value-objects/invoice';
 export interface IInvoiceDomainEntity {
 
     invoiceID?: string | UUIDValueObject;
-    dateEmitted?: number | Date | DateValueObject;
+    dateEmitted?: Date | DateValueObject;
     ticketID?: string | UUIDValueObject;
     customerID?: string | UUIDValueObject;
     invoiceAmount?: number | AmountValueObject;

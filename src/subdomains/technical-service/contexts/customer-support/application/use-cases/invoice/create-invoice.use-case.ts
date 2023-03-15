@@ -152,7 +152,7 @@ export class CreateInvoiceUseCase<
         } = VO;
 
         return new InvoiceDomainEntityBase({
-            dateEmitted: dateEmitted.valueOf(),
+            dateEmitted: dateEmitted.valueOf() as Date,
             ticketID: ticketID.valueOf(),
             customerID: customerID.valueOf(),
             invoiceAmount: invoiceAmount.valueOf(),

@@ -6,7 +6,7 @@ export interface IEmployeeDomainEntity{
     employeeEmail?: string | EmailValueObject;
     employeeRoleId?: string | UUIDValueObject;
     employeeIsActive?: boolean | TrueFalseValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 }

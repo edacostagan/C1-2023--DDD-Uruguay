@@ -13,7 +13,7 @@ export class EmployeeEventsController{
     @EventPattern('customer-support.employee-created')
     employeeCreated(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -26,7 +26,7 @@ export class EmployeeEventsController{
     @EventPattern('customer-support.employee-email-changed')
     employeeEmailChanged(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -39,7 +39,7 @@ export class EmployeeEventsController{
     @EventPattern('customer-support.employee-status-changed')
     employeeStatusChanged(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)

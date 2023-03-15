@@ -22,7 +22,7 @@ export class EmployeeMySqlEntity extends EmployeeDomainEntityBase{
     @CreateDateColumn()
     createdAt?: Date;
 
-    @UpdateDateColumn()   
+    @Column({default:null})
     updatedAt?: Date;    
 
     @DeleteDateColumn()

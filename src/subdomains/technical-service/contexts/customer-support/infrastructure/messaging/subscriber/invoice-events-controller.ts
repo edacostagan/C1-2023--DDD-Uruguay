@@ -13,7 +13,7 @@ export class InvoiceEventsController{
     @EventPattern('customer-support.invoice-created')
     invoiceCreated(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         
         console.log('--------------------------------------')
@@ -27,7 +27,7 @@ export class InvoiceEventsController{
     @EventPattern('customer-support.warranty-added')
     warrantyAdded(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -40,7 +40,7 @@ export class InvoiceEventsController{
     @EventPattern('customer-support.invoice-marked-as-paid')
     invoiceMarkedAsPaid(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -53,10 +53,10 @@ export class InvoiceEventsController{
     @EventPattern('customer-support.customer-created')
     customerCreated(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
-        console.log('Data: ', data)
+        console.log('Data: ',  JSON.stringify(data))
         console.log('--------------------------------------')
         console.log('Context: ', context.getTopic())
         console.log('--------------------------------------')

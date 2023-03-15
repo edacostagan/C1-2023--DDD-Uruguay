@@ -5,10 +5,10 @@ import { WarrantyStatusValueObject } from "../../../value-objects/warranty/warra
 export interface IWarrantyDomainEntity {
 
     warrantyID?: string | UUIDValueObject;
-    startDate?:  number | Date | DateValueObject;
-    endDate?:  number | Date | DateValueObject;    
+    startDate?:  Date | DateValueObject;
+    endDate?:  Date | DateValueObject;    
     warrantyStatus?: string | WarrantyStatusValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 }

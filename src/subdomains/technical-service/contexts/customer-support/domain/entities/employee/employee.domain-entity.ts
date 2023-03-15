@@ -11,9 +11,9 @@ export class EmployeeDomainEntityBase implements IEmployeeDomainEntity{
     employeeEmail: string | EmailValueObject;
     employeeRoleId: string | UUIDValueObject;
     employeeIsActive: boolean | TrueFalseValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 
     constructor(_data?: IEmployeeDomainEntity){
 
@@ -28,6 +28,6 @@ export class EmployeeDomainEntityBase implements IEmployeeDomainEntity{
 
         this.employeeIsActive = true;
         
-        this.createdAt = Date.now();
+        this.createdAt = new Date();
     }
 }

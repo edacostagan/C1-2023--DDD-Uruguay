@@ -13,7 +13,7 @@ export class SupportTicketEventsController {
     @EventPattern('customer-support.support-ticket-opened')
     supportTicketOpened(@Payload() data: any, @Ctx() context: KafkaContext) {
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -27,7 +27,7 @@ export class SupportTicketEventsController {
     @EventPattern('customer-support.support-ticket-closed')
     supportTicketClosed(@Payload() data: any, @Ctx() context: KafkaContext) {
 
-        this.registerEvent(context.getTopic(), data);
+        this.registerEvent(context.getTopic(),  JSON.stringify(data));
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
