@@ -75,6 +75,8 @@ export class EmployeeRepository
 
         entityFound = { ...entityFound, ...entity };
 
+        entityFound.updatedAt = new Date();
+
         this.repository.save(entityFound);
 
         return entityFound;
@@ -94,7 +96,7 @@ export class EmployeeRepository
 
         if (!result) throw new BadRequestException(`Employee with id: ${employeeID} not found`);
 
-        result.deletedAt = Date.now();
+        result.deletedAt = new Date();
 
         this.repository.save(result);
 

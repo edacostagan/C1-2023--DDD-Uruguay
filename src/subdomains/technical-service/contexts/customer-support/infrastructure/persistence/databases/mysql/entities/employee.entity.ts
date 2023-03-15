@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { EmployeeDomainEntityBase } from '../../../../../domain/entities/employee/employee.domain-entity';
 
 @Entity('employee')
@@ -19,4 +19,12 @@ export class EmployeeMySqlEntity extends EmployeeDomainEntityBase{
     @Column({default: true})
     employeeIsActive: boolean;
 
+    @CreateDateColumn()
+    createdAt?: Date;
+
+    @UpdateDateColumn()   
+    updatedAt?: Date;    
+
+    @DeleteDateColumn()
+    deletedAt?: Date;
 }

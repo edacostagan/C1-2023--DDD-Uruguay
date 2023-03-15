@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { SupportTicketDomainEntityBase } from '../../../../../domain/entities/support-ticket/service-ticket.domain-entity';
 
 @Entity('support-ticket')
@@ -8,7 +8,7 @@ export class SupportTicketMySqlEntity extends SupportTicketDomainEntityBase{
     ticketID?:  string;
 
     @Column()
-    dateOpen?: number;
+    dateOpen?: Date;
 
     @Column()
     deviceID?:  string;
@@ -23,5 +23,14 @@ export class SupportTicketMySqlEntity extends SupportTicketDomainEntityBase{
     isOpen?: boolean;
 
     @Column()
-    dateClose?: number;
+    dateClose?: Date;
+
+    @CreateDateColumn()
+    createdAt?: Date;
+
+    @UpdateDateColumn()   
+    updatedAt?: Date;    
+
+    @DeleteDateColumn()
+    deletedAt?: Date;
 }

@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { WarrantyDomainEntityBase } from '../../../../../domain/entities/invoice/warranty.domain-entity/warranty.domain-entity';
 
 @Entity('warranty')
@@ -8,11 +8,20 @@ export class WarrantyMySqlEntity extends WarrantyDomainEntityBase{
     warrantyID?: string;
 
     @Column()
-    startDate?: number; 
+    startDate?: Date; 
 
     @Column()
     warrantyStatus?: string;
 
     @Column()
-    endDate?: number;
+    endDate?: Date;
+
+    @CreateDateColumn()
+    createdAt?: Date;
+
+    @UpdateDateColumn()   
+    updatedAt?: Date;    
+
+    @DeleteDateColumn()
+    deletedAt?: Date;
 }

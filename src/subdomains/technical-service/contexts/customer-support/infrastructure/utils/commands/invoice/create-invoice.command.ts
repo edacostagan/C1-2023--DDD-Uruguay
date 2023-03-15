@@ -3,7 +3,7 @@ import { ICreateInvoiceCommand } from '../../../../domain/interfaces/';
 
 export class CreateInvoiceCommand implements ICreateInvoiceCommand{
     @IsDate()
-    dateEmitted: number;
+    dateEmitted: Date;
     @IsString()
     ticketID?: string;
     @IsString()

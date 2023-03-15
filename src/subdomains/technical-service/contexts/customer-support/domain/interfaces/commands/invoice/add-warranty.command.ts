@@ -1,5 +1,5 @@
 export interface IAddWarrantyCommand {
-    startDate?:  number;
-    endDate?:  number;    
+    startDate?:  Date;
+    endDate?:  Date;    
     warrantyStatus?: string;    
 }

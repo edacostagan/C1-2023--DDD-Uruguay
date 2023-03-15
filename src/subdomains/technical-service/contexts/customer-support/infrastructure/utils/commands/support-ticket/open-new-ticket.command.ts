@@ -5,7 +5,7 @@ export class OpenNewTicketCommand implements IOpenNewTicketCommand{
     @IsString()
     ticketID: string;
     @IsNumber()
-    openDate: number;
+    openDate: Date;
     @IsString()
     deviceID: string; 
     @IsString()

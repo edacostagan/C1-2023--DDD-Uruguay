@@ -74,6 +74,8 @@ export class WarrantyRepository implements IRepository<WarrantyMySqlEntity>{
 
         entityFound = { ...entityFound, ...entity };
 
+        entityFound.updatedAt = new Date();
+
         this.repository.save(entityFound);
 
         return entityFound;
@@ -93,7 +95,7 @@ export class WarrantyRepository implements IRepository<WarrantyMySqlEntity>{
 
         if (!result) throw new BadRequestException(`Warranty with id: ${warrantyID} not found`);
 
-        result.deletedAt = Date.now();
+        result.deletedAt = new Date();
 
         this.repository.save(result);
 

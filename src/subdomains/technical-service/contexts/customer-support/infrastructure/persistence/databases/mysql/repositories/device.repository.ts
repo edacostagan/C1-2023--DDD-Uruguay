@@ -74,6 +74,8 @@ export class DeviceRepository
 
         entityFound = { ...entityFound, ...entity };
 
+        entityFound.updatedAt = new Date();
+
         this.repository.save(entityFound);
 
         return entityFound;
@@ -94,7 +96,7 @@ export class DeviceRepository
 
         if (!result) throw new BadRequestException(`Device with id: ${deviceID} not found`);
 
-        result.deletedAt = Date.now();
+        result.deletedAt = new Date();
 
         this.repository.save(result);
         

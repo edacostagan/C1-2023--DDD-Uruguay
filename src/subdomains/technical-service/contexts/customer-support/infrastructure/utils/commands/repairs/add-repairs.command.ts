@@ -1,9 +1,13 @@
-import { IsString } from "class-validator";
+import { IsBoolean, IsDate, IsString } from "class-validator";
 import { IAddRepairsCommand } from "../../../../domain/interfaces";
 
 export class AddRepairsCommand implements IAddRepairsCommand{
+    @IsDate()
+    repairDate?: Date;
     @IsString()
-    repairID: string ;
+    repairID?: string ;
     @IsString()
-    repairToAdd: string;
+    details?: string;   
+    @IsBoolean()
+    workFinished?: boolean;
 }

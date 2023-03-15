@@ -2,9 +2,9 @@ import { ValueObjectBase } from '@sofka';
 import { IsEmptyOrNull } from '../../../../../../../../libs/validations/checkIsEmptyOrNull.validation';
 import { IsValidDate } from '../../../../../../../../libs/validations/date.validation';
 
-export class DateValueObject extends ValueObjectBase<number |Date> {
+export class DateValueObject extends ValueObjectBase< Date > {
 
-    constructor(value?: number | Date) {
+    constructor(value?: Date) {
         super(value ? value : null)
     }
 
@@ -40,10 +40,10 @@ export class DateValueObject extends ValueObjectBase<number |Date> {
 
      /**
      * Validates the structure of the value object given
-     * It must be a valid Email
+     * It must be a valid Date
      * 
      * @private
-     * @memberof EmailValueObject
+     * @memberof DateValueObject
      */
      private isValidDate(): void {
 

@@ -1,4 +1,4 @@
-export const IsEmptyOrNull = (value: boolean | string | number | bigint | [] | object | null | undefined ): boolean => {
+export const IsEmptyOrNull = (value: boolean | string | number | bigint | Date | [] | object | null | undefined ): boolean => {
 
     if(typeof value === 'string') return value.trim() === '' ? true: false;
 

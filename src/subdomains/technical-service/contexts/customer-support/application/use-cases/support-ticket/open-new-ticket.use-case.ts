@@ -49,7 +49,7 @@ export class OpenNewTicketUseCase<
 
         const VO = this.createValueObject(command);
 
-        this.validateValueObject(VO);
+     //TODO: reactivar esto ->   this.validateValueObject(VO);
 
         const entity = this.createSupportTicketEntityDomain(VO);
 
@@ -134,7 +134,7 @@ export class OpenNewTicketUseCase<
         
         return new SupportTicketDomainEntityBase({
 
-            dateOpen: dateOpen.valueOf(),
+            dateOpen: dateOpen.valueOf() as Date,
             employeeID: employeeID.valueOf(),
             deviceID: deviceID.valueOf(),
             isOpen: isOpen.valueOf()

@@ -10,7 +10,7 @@ export class RepairsEventsController {
         private readonly eventRepository: EventRepository
     ){ }
 
-    @EventPattern('customer-support.repair-added')
+    @EventPattern('customer-support.repairs-added')
     repairDetailsAdded(@Payload() data: any, @Ctx() context: KafkaContext) {
 
 

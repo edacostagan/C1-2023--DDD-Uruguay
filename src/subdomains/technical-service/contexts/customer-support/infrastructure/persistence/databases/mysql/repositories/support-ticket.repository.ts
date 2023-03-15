@@ -75,6 +75,8 @@ export class SupportTicketRepository implements IRepository<SupportTicketMySqlEn
 
         entityFound = { ...entityFound, ...entity };
 
+        entityFound.updatedAt = new Date();
+
         this.repository.save(entityFound);
 
         return entityFound;
@@ -95,7 +97,7 @@ export class SupportTicketRepository implements IRepository<SupportTicketMySqlEn
 
         if (!result) throw new BadRequestException(`Support Ticket with id: ${ticketID} not found`);
 
-        result.deletedAt = Date.now();
+        result.deletedAt = new Date();
 
         this.repository.save(result);
 

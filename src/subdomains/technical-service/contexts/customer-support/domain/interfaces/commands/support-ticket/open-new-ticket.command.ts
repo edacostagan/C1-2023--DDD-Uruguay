@@ -1,6 +1,6 @@
 export interface IOpenNewTicketCommand{
     ticketID: string;
-    openDate: number;
+    openDate: Date;
     deviceID: string; 
     employeeID: string;     
 }

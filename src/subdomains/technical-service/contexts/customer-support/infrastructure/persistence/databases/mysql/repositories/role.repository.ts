@@ -72,6 +72,8 @@ export class RoleRepository implements IRepository<RoleMySqlEntity>{
 
         entityFound = { ...entityFound, ...entity };
 
+        entityFound.updatedAt = new Date();
+
         this.repository.save(entityFound);
 
         return entityFound;
@@ -92,7 +94,7 @@ export class RoleRepository implements IRepository<RoleMySqlEntity>{
 
         if (!result) throw new BadRequestException(`Role with id: ${roleID} not found`);
 
-        result.deletedAt = Date.now();
+        result.deletedAt = new Date();
 
         this.repository.save(result);
         
