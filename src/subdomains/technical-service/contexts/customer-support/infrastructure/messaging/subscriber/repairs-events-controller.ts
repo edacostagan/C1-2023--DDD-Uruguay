@@ -19,7 +19,7 @@ export class RepairsEventsController {
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
-        console.log('Context: ', context)
+        console.log('Context: ', context.getTopic())
         console.log('--------------------------------------')
 
     }
@@ -33,7 +33,7 @@ export class RepairsEventsController {
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
-        console.log('Context: ', context)
+        console.log('Context: ', context.getTopic())
         console.log('--------------------------------------')
 
     }

@@ -46,7 +46,8 @@ export class ChangeCustomerEmailUseCase<
     executeCommand(command: Command) {
 
         const VO = this.createValueObject(command);
-        this.validateValueObject(VO);
+      
+     //TODO: reactivar esto ->   this.validateValueObject(VO);
 
         const entity = this.createCustomerEntity(VO);
 

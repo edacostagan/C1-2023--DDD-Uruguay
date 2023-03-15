@@ -46,7 +46,7 @@ export class InvoiceController {
     @Post('/add-customer')
     async createCustomer(@Body() command: CreateCustomerCommand) {
         const useCase = new CreateCustomerUseCase(
-            this.customerService,
+             this.invoiceService, //this.customerService,
             this.customerCreatedEventPublisherBase,
         );
         return await useCase.execute(command);

@@ -1,7 +1,7 @@
 import { IsValidFullname } from '../../../../../../../../libs/validations/fullname.validation';
 import { ValueObjectBase } from '../../../../../../../../libs/sofka/bases/object-value.base';
 import { StringBiggerThanMaxLength } from '../../../../../../../../libs/validations/string-max-length.validation';
-import { IsEmptyOrNull } from 'src/libs/validations/checkIsEmptyOrNull.validation';
+import { IsEmptyOrNull } from '../../../../../../../../libs/validations/checkIsEmptyOrNull.validation';
 import { StringSmallerThanMinLength } from '../../../../../../../../libs/validations/string-min-length.validation';
 export class FullnameValueObject extends ValueObjectBase<string> {
     

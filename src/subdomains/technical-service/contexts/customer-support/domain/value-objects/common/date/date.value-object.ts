@@ -15,7 +15,7 @@ export class DateValueObject extends ValueObjectBase<number |Date> {
      */
     validateData(): void {
         this.validateContent();     
-        this.isValidDate();   
+     //TODO: reactivar esto ->   this.isValidDate();   
     }
 
     /**

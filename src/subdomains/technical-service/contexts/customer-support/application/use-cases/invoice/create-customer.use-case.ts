@@ -10,6 +10,7 @@ import { ICustomerDomainEntity } from '../../../domain/entities/interfaces/invoi
 import { PhoneValueObject, EmailValueObject, FullnameValueObject } from '../../../domain/value-objects/';
 
 import { ValueObjectException, IUseCase, ValueObjectErrorHandler } from '@sofka';
+import { IInvoiceDomainService } from '../../../domain/services';
 
 
 export class CreateCustomerUseCase<
@@ -20,12 +21,14 @@ export class CreateCustomerUseCase<
     private readonly invoiceAggregateRoot: InvoiceAggregate;
 
     constructor(
-        private readonly customerService: ICustomerDomainService,
+        private readonly invoiceService: IInvoiceDomainService,
+        //private readonly customerService: ICustomerDomainService,
         private readonly customerCreatedEventPublisherBase: CustomerCreatedEventPublisherBase
     ) {
         super();
         this.invoiceAggregateRoot = new InvoiceAggregate({
-            customerService,
+            invoiceService,
+            //customerService,
             customerCreatedEventPublisherBase
         })
     }
@@ -38,8 +41,6 @@ export class CreateCustomerUseCase<
         return { success: data ? true : false, data } as unknown as Response;
     }
 
-
-
     /**
      * executes all the steps needed to make a new entity
      *
@@ -49,8 +50,8 @@ export class CreateCustomerUseCase<
      */
     executeCommand(command: Command): Promise<CustomerDomainEntityBase | null> {
         const VO = this.createValueObject(command);
-       
-        this.validateValueObject(VO);
+
+       //TODO: reactivar esto -> this.validateValueObject(VO);
 
         const entity = this.createCustomerEntity(VO)
 
@@ -68,7 +69,7 @@ export class CreateCustomerUseCase<
 
         const customerName = new FullnameValueObject(command.customerName);
         const customerEmail = new EmailValueObject(command.customerEmail);
-        const customerPhone = new PhoneValueObject(command.customerPhone);        
+        const customerPhone = new PhoneValueObject(command.customerPhone);
 
         return {
             customerName,
@@ -92,16 +93,22 @@ export class CreateCustomerUseCase<
         } = VO;
 
         // validates fullname
-        if (customerName instanceof FullnameValueObject && customerName.hasErrors())
+        if (customerName instanceof FullnameValueObject && customerName.hasErrors()) {
             this.setErrors(customerName.getErrors());
+            console.log('error en customername')
+        }
 
         //validate email
-        if (customerEmail instanceof EmailValueObject && customerEmail.hasErrors())
+        if (customerEmail instanceof EmailValueObject && customerEmail.hasErrors()) {
             this.setErrors(customerEmail.getErrors());
-        //validates phone
-        if (customerPhone instanceof EmailValueObject && customerPhone.hasErrors())
-            this.setErrors(customerPhone.getErrors());
+            console.log('error en customeremail')
+        }
 
+        //validates phone
+        if (customerPhone instanceof PhoneValueObject && customerPhone.hasErrors()) {
+            this.setErrors(customerPhone.getErrors());
+            console.log('error en customerphone')
+        }
         if (this.hasErrors() === true)
             throw new ValueObjectException(
                 'CreateCustomerUserCase command execution return some errors!',
@@ -117,8 +124,8 @@ export class CreateCustomerUseCase<
      * @return {*} 
      * @memberof CreateCustomerUserCase
      */
-    createCustomerEntity(VO: ICustomerDomainEntity) {
-        
+    createCustomerEntity(VO: ICustomerDomainEntity): CustomerDomainEntityBase {
+
         const {
             customerName,
             customerEmail,
@@ -132,7 +139,6 @@ export class CreateCustomerUseCase<
         })
     }
 
-
     /**
      * Executes the method on the aggregate
      *
@@ -142,9 +148,9 @@ export class CreateCustomerUseCase<
      */
     executeCreateCustomerAggregateRoot(
         entity: CustomerDomainEntityBase): Promise<CustomerDomainEntityBase> {
-        
-            return this.invoiceAggregateRoot.CreateCustomer(entity);
+
+        return this.invoiceAggregateRoot.CreateCustomer(entity);
     }
-   
+
 
 }

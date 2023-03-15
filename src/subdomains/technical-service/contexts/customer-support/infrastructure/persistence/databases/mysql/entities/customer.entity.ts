@@ -1,5 +1,5 @@
 import { CustomerDomainEntityBase } from "src/subdomains/technical-service/contexts/customer-support/domain/entities/invoice";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('customer')
 export class CustomerMySqlEntity extends CustomerDomainEntityBase {
@@ -16,14 +16,14 @@ export class CustomerMySqlEntity extends CustomerDomainEntityBase {
     @Column()
     customerPhone?: string;
 
-    @Column()
-    createdAt?: number;
+    @CreateDateColumn()
+    createdAt?: Date;
 
-    @Column()    
-    deletedAt?: number;
+    @UpdateDateColumn()    
+    deletedAt?: Date;
 
-    @Column()
-    updatedAt?: number;
+    @DeleteDateColumn()
+    updatedAt?: Date;
 
     
 }

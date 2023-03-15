@@ -15,16 +15,17 @@ export class InvoiceDomainEntityBase implements IInvoiceDomainEntity {
     invoiceAmount?: number | AmountValueObject;
     warrantyID?: string | UUIDValueObject;
     isPaid?: boolean | TrueFalseValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 
     constructor(_data?: IInvoiceDomainEntity) {
 
         if (_data?.invoiceID && IsUUID(_data?.invoiceID)) this.invoiceID = _data.invoiceID;
         else this.invoiceID = uuid();
 
-        if (_data?.dateEmitted && IsValidDate(_data.dateEmitted)) this.dateEmitted = _data.dateEmitted;
+        if (_data?.dateEmitted ) this.dateEmitted = _data.dateEmitted; 
+        else this.dateEmitted = new Date();
 
         if (_data?.ticketID && IsUUID(_data?.ticketID)) this.ticketID = _data.ticketID;
 
@@ -37,7 +38,7 @@ export class InvoiceDomainEntityBase implements IInvoiceDomainEntity {
         if (_data?.isPaid && IsBoolean(_data?.isPaid)) this.isPaid = _data.isPaid;
         else this.isPaid = false;
 
-        this.createdAt = Date.now();
+        this.createdAt = new Date();
 
     }
 }

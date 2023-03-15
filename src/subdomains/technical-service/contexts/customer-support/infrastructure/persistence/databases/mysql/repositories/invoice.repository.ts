@@ -72,6 +72,8 @@ export class InvoiceRepository implements IRepository<InvoiceMySqlEntity>{
 
         entityFound = { ...entityFound, ...entity };
 
+        entityFound.updatedAt = new Date();
+
         this.repository.save(entityFound);
 
         return entityFound;
@@ -92,7 +94,7 @@ export class InvoiceRepository implements IRepository<InvoiceMySqlEntity>{
 
         if (!result) throw new BadRequestException(`Invoice with id: ${invoiceID} not found`);
 
-        result.deletedAt = Date.now();
+        result.deletedAt = new Date();
 
         this.repository.save(result);
 

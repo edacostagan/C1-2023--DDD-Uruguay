@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { InvoiceDomainEntityBase } from '../../../../../domain/entities/invoice/';
 
 @Entity('invoice')
@@ -8,7 +8,7 @@ export class InvoiceMySqlEntity extends InvoiceDomainEntityBase {
     invoiceID?: string;
 
     @Column()
-    dateEmitted?:number;
+    dateEmitted?:Date;
 
     @Column()
     ticketID?: string;
@@ -25,12 +25,12 @@ export class InvoiceMySqlEntity extends InvoiceDomainEntityBase {
     @Column({default: false})
     isPaid?: boolean;
 
-    @Column()
-    createdAt?: number;
+    @CreateDateColumn()
+    createdAt?: Date;
 
-    @Column()
-    updatedAt?: number;
+    @UpdateDateColumn()
+    updatedAt?: Date;
 
-    @Column()
-    deletedAt?: number;
+    @DeleteDateColumn()
+    deletedAt?: Date;
 }

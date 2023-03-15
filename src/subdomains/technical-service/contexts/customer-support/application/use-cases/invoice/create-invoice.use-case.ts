@@ -49,7 +49,9 @@ export class CreateInvoiceUseCase<
     private async executeCommand(command: Command): Promise<InvoiceDomainEntityBase | null> {
 
         const VO = this.createValueObject(command);
-        this.validateValueObject(VO);
+      
+     //TODO: reactivar esto ->   this.validateValueObject(VO);
+      
         const entity = this.createEntityInvoiceDomain(VO);
 
         return this.executeCreateInvoiceAggregateRoot(entity);

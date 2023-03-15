@@ -16,8 +16,6 @@ export class InvoiceMySqlService implements IInvoiceDomainService{
         private readonly warrantyRepository: WarrantyRepository
     ){}
 
-
-
     /**
      * creates a new invoice entity in DB
      *
@@ -30,8 +28,6 @@ export class InvoiceMySqlService implements IInvoiceDomainService{
         return await this.invoiceRepository.create(invoiceData as InvoiceMySqlEntity);
     }
 
-
-
     /**
      * Adds a new Warranty Entity to DB
      *
@@ -42,8 +38,6 @@ export class InvoiceMySqlService implements IInvoiceDomainService{
     async AddWarranty(warrantyData: IWarrantyDomainEntity): Promise<IWarrantyDomainEntity> {
         return await this.warrantyRepository.create(warrantyData as WarrantyMySqlEntity);
     }
-
-
 
     /**
      * Updates the Paid status of the invoice
@@ -56,11 +50,8 @@ export class InvoiceMySqlService implements IInvoiceDomainService{
         
         if(this.invoiceRepository.update(invoiceData as InvoiceMySqlEntity)) return await true;
 
-        return false;
-        
+        return false;        
     }
-
-
 
     /**
      * adds a new Customer Entity to the DB

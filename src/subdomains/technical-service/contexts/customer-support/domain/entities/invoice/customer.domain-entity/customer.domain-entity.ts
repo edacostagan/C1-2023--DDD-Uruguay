@@ -4,17 +4,15 @@ import { UUIDValueObject, FullnameValueObject, EmailValueObject, PhoneValueObjec
 import { ICustomerDomainEntity } from '../../interfaces/invoice/';
 import { IsValidFullname, IsUUID, IsEmail, IsPhoneNumber  } from '../../../../../../../../libs/validations';
 
-
-
 export class CustomerDomainEntityBase implements ICustomerDomainEntity {    
     
     customerID?: string | UUIDValueObject;
     customerName?: string | FullnameValueObject;
     customerEmail?: string | EmailValueObject;
     customerPhone?: string | PhoneValueObject;    
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 
     constructor(_data?: ICustomerDomainEntity){
 
@@ -25,9 +23,9 @@ export class CustomerDomainEntityBase implements ICustomerDomainEntity {
 
         if(_data?.customerEmail && IsEmail(_data?.customerEmail)) this.customerEmail = _data.customerEmail;
 
-        if(_data?.customerPhone && IsPhoneNumber(_data?.customerPhone)) this.customerPhone = _data.customerPhone;
+        if(_data?.customerPhone ) this.customerPhone = _data.customerPhone; 
 
-        this.createdAt = Date.now();
+        this.createdAt = new Date();
     }  
      
 }

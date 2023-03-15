@@ -129,7 +129,7 @@ export class InvoiceAggregate implements IInvoiceDomainService, ICustomerDomainS
      */
     async CreateCustomer(customerData: CustomerDomainEntityBase): Promise<CustomerDomainEntityBase | null> {
 
-        if (!this.invoiceService) {
+      if (!this.invoiceService) {      
             throw new AggregateRootException('InvoiceAggregate: "InvoiceService" is not defined!');
         }
         if (!this.customerCreatedEventPublisherBase) {

@@ -33,7 +33,7 @@ export class RepairsController {
     async changeWorkStatus(@Body() command: ChangeWorkStatusCommand) {
         const useCase = new ChangeWorkStatusUseCase(
             this.repairsService,
-            this.repairsAddedEventPublisherBase,
+            this.workStatusChangedEventPublisherBase,
         );
         return await useCase.execute(command);
     }

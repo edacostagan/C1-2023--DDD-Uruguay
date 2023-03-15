@@ -10,8 +10,8 @@ export interface IInvoiceDomainEntity {
     invoiceAmount?: number | AmountValueObject;
     warrantyID?: string | UUIDValueObject;
     isPaid?: boolean | TrueFalseValueObject;
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
 
 }

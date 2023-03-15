@@ -7,8 +7,8 @@ export interface ICustomerDomainEntity {
     customerName?: string | FullnameValueObject;
     customerEmail?: string | EmailValueObject;
     customerPhone?: string | PhoneValueObject; 
-    createdAt?: number | Date;
-    updatedAt?: number | Date;
-    deletedAt?: number | Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
     
 }

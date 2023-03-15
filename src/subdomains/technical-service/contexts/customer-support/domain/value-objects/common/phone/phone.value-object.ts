@@ -1,7 +1,7 @@
 import { IsPhoneNumber } from '../../../../../../../../libs/validations/phone.validation';
 import { ValueObjectBase } from '../../../../../../../../libs/sofka/bases/object-value.base';
 import { StringBiggerThanMaxLength } from '../../../../../../../../libs/validations/string-max-length.validation';
-import { IsEmptyOrNull } from 'src/libs/validations/checkIsEmptyOrNull.validation';
+import { IsEmptyOrNull } from '../../../../../../../../libs/validations/checkIsEmptyOrNull.validation';
 
 export class PhoneValueObject extends ValueObjectBase<string> {
 

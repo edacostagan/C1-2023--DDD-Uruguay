@@ -78,12 +78,12 @@ export class CustomerRepository
 
         entityFound = {...entityFound, ...entity};
 
+        entityFound.updatedAt = new Date();
+        
         this.repository.save(entityFound);
 
         return entityFound;
     }
-
-
 
     /**
      * Soft deletes the customer Entity with the given ID
@@ -99,7 +99,7 @@ export class CustomerRepository
 
         if (!result) throw new BadRequestException(`Customer with id: ${customerID} not found`);
 
-        result.deletedAt = Date.now();
+        result.deletedAt = new Date();
 
         this.repository.save(result);
 
