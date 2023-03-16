@@ -15,7 +15,6 @@ export class CustomerCreatedPublisher extends CustomerCreatedEventPublisherBase{
             super(proxy as unknown as IEventPublisher);
         }
 
-
         emit<Result = any, Input = CustomerEntity>(
             pattern: any,
             data: Input,

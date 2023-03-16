@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { IsUUID } from 'src/libs/validations';
+import { IsUUID } from '@validations';
 import { UUIDValueObject, DeviceTypeValueObject, IssueValueObject } from '../../../value-objects';
 import { IDeviceDomainEntity } from '../../interfaces/support-ticket/';
 

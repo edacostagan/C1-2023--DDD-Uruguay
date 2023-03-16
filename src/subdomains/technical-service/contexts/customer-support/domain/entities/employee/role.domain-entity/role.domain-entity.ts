@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { IsUUID } from "src/libs/validations";
+import { IsUUID } from "@validations";
 import { UUIDValueObject, NoteValueObject, RoleValueObject } from "../../../value-objects";
 import { IRoleDomainEntity } from "../../interfaces/employee";
 

@@ -1,5 +1,5 @@
-import { EventPublisherBase } from "../../../../../../../../libs/sofka/bases";
-import { CustomerDomainEntityBase } from "../../../entities/invoice/customer.domain-entity";
+import { EventPublisherBase } from "@sofka";
+import { CustomerDomainEntityBase } from "../../../entities/invoice";
 export abstract class CustomerCreatedEventPublisherBase < Response = CustomerDomainEntityBase | null > extends EventPublisherBase<Response>{
 
     publish<Result = any>(): Promise<Result> {

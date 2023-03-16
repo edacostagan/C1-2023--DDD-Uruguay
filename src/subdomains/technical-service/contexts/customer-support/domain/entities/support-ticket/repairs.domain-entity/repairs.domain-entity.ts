@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 
 import { UUIDValueObject, DateValueObject, TrueFalseValueObject, NoteValueObject } from '../../../value-objects';
 import { IRepairsDomainEntity } from '../../interfaces/support-ticket/';
-import { IsBoolean, IsUUID, IsValidDate } from "src/libs/validations";
+import { IsBoolean, IsUUID, IsValidDate } from "@validations";
 
 
 export class RepairsDomainEntityBase implements IRepairsDomainEntity{

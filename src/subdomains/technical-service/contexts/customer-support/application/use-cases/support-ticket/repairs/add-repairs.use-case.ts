@@ -48,7 +48,7 @@ export class AddRepairDetailsUseCase<
 
         const VO = this.createValueObject(command);
 
-        //TODO: Reactivar esto ->          this.validateValueObject(VO);
+        //TODO: Reactivar esto -> this.validateValueObject(VO);
 
         const entity = this.createRepairEntity(VO);
 
@@ -110,7 +110,6 @@ export class AddRepairDetailsUseCase<
         // validates workFinished
         if (workFinished instanceof TrueFalseValueObject && workFinished.hasErrors())
             this.setErrors(workFinished.getErrors());
-
 
         if (this.hasErrors() === true)
             throw new ValueObjectException(

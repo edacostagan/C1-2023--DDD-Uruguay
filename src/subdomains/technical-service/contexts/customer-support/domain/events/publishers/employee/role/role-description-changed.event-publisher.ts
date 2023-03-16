@@ -1,4 +1,4 @@
-import { EventPublisherBase } from "../../../../../../../../../libs/sofka/bases";
+import { EventPublisherBase } from "@sofka";
 export abstract class RoleDescriptionChangedEventPublisherBase < Response = boolean > extends EventPublisherBase<Response>{
 
     publish<Result = any>(): Promise<Result> {

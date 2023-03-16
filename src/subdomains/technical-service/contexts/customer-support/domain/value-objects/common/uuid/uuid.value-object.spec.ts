@@ -15,7 +15,6 @@ describe('UUIDValueObject', () => {
       VO = new UUIDValueObject();
      });
 
-
     //// TEST
     // Create
     it('should the defined', () => {        
