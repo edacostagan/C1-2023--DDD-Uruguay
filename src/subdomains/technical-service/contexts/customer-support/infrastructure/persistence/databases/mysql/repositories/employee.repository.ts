@@ -10,7 +10,7 @@ export class EmployeeRepository
     implements IRepository<EmployeeMySqlEntity>{
 
     constructor(
-        @InjectRepository(CustomerMySqlEntity)
+        @InjectRepository(EmployeeMySqlEntity)
         private readonly repository: Repository<EmployeeMySqlEntity>
     ){}
 

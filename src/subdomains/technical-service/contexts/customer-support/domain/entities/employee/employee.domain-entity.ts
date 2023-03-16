@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { UUIDValueObject, FullnameValueObject, TrueFalseValueObject, EmailValueObject } from "../../value-objects/common";
 
 import { IEmployeeDomainEntity } from "../interfaces/employee/employee.domain-entity.interface";
-import { IsUUID, IsEmail, IsValidFullname} from '../../../../../../../libs/validations';
+import { IsUUID, IsEmail, IsValidFullname} from '@validations';
 
 export class EmployeeDomainEntityBase implements IEmployeeDomainEntity{
     employeeID?: string | UUIDValueObject;

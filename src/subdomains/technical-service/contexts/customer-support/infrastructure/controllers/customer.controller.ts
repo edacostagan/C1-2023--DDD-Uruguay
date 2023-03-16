@@ -38,7 +38,7 @@ export class CustomerController {
         return await useCase.execute(command);
     }
 
-    // Get HTTP petition to return Customer Details
+   // Get HTTP petition to return Customer Details
    /* @Get()
     async getDetails(command: GetCustomerDetailsCommand) {
         const useCase = new GetCustomerDetailsUseCase(

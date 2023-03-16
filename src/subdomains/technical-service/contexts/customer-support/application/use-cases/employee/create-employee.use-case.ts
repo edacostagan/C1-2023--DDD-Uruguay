@@ -4,10 +4,8 @@ import { EmployeeAggregate } from '../../../domain/aggregates/';
 import { IEmployeeDomainService } from '../../../domain/services/';
 import { EmployeeCreatedEventPublisherBase } from '../../../domain/events/';
 import { IEmployeeDomainEntity } from '../../../domain/entities/interfaces/employee/';
-import { UUIDValueObject, FullnameValueObject, EmailValueObject } from '../../../domain/value-objects/';
+import { TrueFalseValueObject, UUIDValueObject, FullnameValueObject, EmailValueObject } from '../../../domain/value-objects/';
 import { EmployeeDomainEntityBase } from '../../../domain/entities/employee/employee.domain-entity';
-import { TrueFalseValueObject } from '../../../domain/value-objects/common/true-false/true-false.value-object';
-
 
 export class CreateEmployeeUseCase <
     Command extends ICreateEmployeeCommand = ICreateEmployeeCommand,

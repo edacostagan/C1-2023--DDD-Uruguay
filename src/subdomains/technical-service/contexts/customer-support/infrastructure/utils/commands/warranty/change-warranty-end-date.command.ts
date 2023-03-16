@@ -6,4 +6,6 @@ export class ChangeWarrantyEndDateCommand implements IChangeWarrantyEndDateComma
     warrantyID: string;
     @IsDate()
     newEndDate: Date;    
+    @IsString()
+    warrantyReason: string;
 }

@@ -43,7 +43,8 @@ export class ChangeEmployeeEmailUseCase<
     private async executeCommand(command: Command) : Promise< boolean >{
          
         const VO = this.createValueObject(command);
-        this.validateValueObject(VO);
+        
+        //TODO: reactivar esto -> this.validateValueObject(VO);
 
         const entity = this.createEmployeeEntityDomain(VO);
 

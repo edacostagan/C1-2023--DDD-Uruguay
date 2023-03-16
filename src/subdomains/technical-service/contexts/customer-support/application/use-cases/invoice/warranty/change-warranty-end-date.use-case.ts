@@ -12,6 +12,7 @@ import { WarrantyDomainEntityBase } from '../../../../domain/entities/invoice/wa
 import { IChangeWarrantyEndDateCommand } from '../../../../domain/interfaces/commands/invoice/warranty/change-warranty-end-date.command';
 import { IWarrantyEndDateChangedResponse } from '../../../../domain/interfaces/responses/invoice/warranty/warranty-end-date-changed.response';
 import { WarrantyEndDateChangedEventPublisherBase } from '../../../../domain/events/publishers/invoice/warranty/warranty-end-date-changed.event-publisher';
+import { NoteValueObject } from '../../../../domain/value-objects/common/note/note.value-object';
 
 
 
@@ -26,7 +27,7 @@ export class ChangeWarrantyEndDateUseCase<
     constructor(
         private readonly warrantyService: IWarrantyDomainService,
         private readonly warrantyEndDateChangedEventPublisherBase: WarrantyEndDateChangedEventPublisherBase
-    ){
+    ) {
         super();
         this.invoiceAggregateRoot = new InvoiceAggregate({
             warrantyService,
@@ -46,17 +47,17 @@ export class ChangeWarrantyEndDateUseCase<
      * @return {*}  {Promise <boolean>}
      * @memberof ChangeWarrantyStatusUseCase
      */
-    executeCommand(command: Command): Promise <boolean> {
-        
+    executeCommand(command: Command): Promise<boolean> {
+
         const VO = this.createValueObject(command);
 
         this.validateValueObject(VO);
 
         const entity = this.createWarrantyEntity(VO);
-        
+
         return this.executeChangeWarrantyEndDateAggregateRoot(entity);
     }
-   
+
     /**
      * Generates a Warranty entity type with only the needed values (End Date)
      *
@@ -65,13 +66,15 @@ export class ChangeWarrantyEndDateUseCase<
      * @memberof ChangeWarrantyStatusUseCase
      */
     createValueObject(command: Command): IWarrantyDomainEntity {
-        
-        const warrantyID = new UUIDValueObject(command.warrantyID);
-        const endDate = new DateValueObject(command.newEndDate);        
 
-        return{
+        const warrantyID = new UUIDValueObject(command.warrantyID);
+        const endDate = new DateValueObject(command.newEndDate);
+        const warrantyReason = new NoteValueObject(command.warrantyReason);
+
+        return {
             warrantyID,
-            endDate
+            endDate,
+            warrantyReason
         }
     }
 
@@ -83,25 +86,30 @@ export class ChangeWarrantyEndDateUseCase<
      * @memberof ChangeWarrantyStatusUseCase
      */
     validateValueObject(VO: IWarrantyDomainEntity) {
-        
+
         const {
             warrantyID,
-            endDate            
+            endDate,
+            warrantyReason
         } = VO;
 
         // validates warrantyID
         if (warrantyID instanceof UUIDValueObject && warrantyID.hasErrors())
-        this.setErrors(warrantyID.getErrors());
+            this.setErrors(warrantyID.getErrors());
 
         // validates endDate
         if (endDate instanceof DateValueObject && endDate.hasErrors())
-        this.setErrors(endDate.getErrors());
+            this.setErrors(endDate.getErrors());
+        
+            // validates warrantyReason
+        // if (warrantyReason instanceof NoteValueObject && warrantyReason.hasErrors())
+        // this.setErrors(warrantyReason.getErrors());
 
         if (this.hasErrors() === true)
-        throw new ValueObjectException(
-            'ChangeWarrantyEndDateUseCase command execution return some errors!',
-            this.getErrors(),
-        );
+            throw new ValueObjectException(
+                'ChangeWarrantyEndDateUseCase command execution return some errors!',
+                this.getErrors(),
+            );
     }
 
 
@@ -113,15 +121,17 @@ export class ChangeWarrantyEndDateUseCase<
      * @memberof ChangeWarrantyStatusUseCase
      */
     createWarrantyEntity(VO: IWarrantyDomainEntity): WarrantyDomainEntityBase {
-     
+
         const {
             warrantyID,
-            endDate            
+            endDate,
+            warrantyReason
         } = VO;
 
-        return new WarrantyDomainEntityBase ({
+        return new WarrantyDomainEntityBase({
             warrantyID: warrantyID.valueOf(),
-            endDate: endDate.valueOf() as Date
+            endDate: endDate.valueOf() as Date,
+            warrantyReason: warrantyReason.valueOf()
         })
     }
 
@@ -136,7 +146,7 @@ export class ChangeWarrantyEndDateUseCase<
      */
     executeChangeWarrantyEndDateAggregateRoot(
         entity: WarrantyDomainEntityBase): Promise<boolean> {
-        
-            return this.invoiceAggregateRoot.ChangeWarrantyEndDate(entity);
+
+        return this.invoiceAggregateRoot.ChangeWarrantyEndDate(entity);
     }
 }

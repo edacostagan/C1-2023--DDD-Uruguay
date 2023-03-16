@@ -35,7 +35,7 @@ export class EmployeeController {
     }    
 
     // Get HTTP petition to updates Employee Status
-    @Post('/change-employee-status')
+    @Post('/change-status')
     async changeEmployeeStatus(@Body() command: ChangeEmployeeStatusCommand) {
         const useCase = new ChangeEmployeeStatusUseCase(
             this.employeeService,
@@ -45,7 +45,7 @@ export class EmployeeController {
     }    
 
     // Get HTTP petition to updates Employee email
-    @Post('/change-employee-email')
+    @Post('/change-email')
     async changeEmployeeEmail(@Body() command: ChangeEmployeeMailCommand) {
         const useCase = new ChangeEmployeeEmailUseCase(
             this.employeeService,
