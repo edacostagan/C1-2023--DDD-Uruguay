@@ -1,5 +1,6 @@
 export interface ICreateEmployeeCommand {
-    employeeFullname?: string;
+    employeeName?: string;
     employeeEmail?: string;
     employeeRoleID?: string;
+    employeeIsActive?: boolean;
 }

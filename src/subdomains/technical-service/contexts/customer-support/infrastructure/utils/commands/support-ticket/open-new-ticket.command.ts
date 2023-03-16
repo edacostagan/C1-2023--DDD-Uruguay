@@ -1,13 +1,20 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsString, IsDate } from 'class-validator';
 import { IOpenNewTicketCommand } from "../../../../domain/interfaces";
 
 export class OpenNewTicketCommand implements IOpenNewTicketCommand{
     @IsString()
-    ticketID: string;
-    @IsNumber()
-    openDate: Date;
+    ticketID?: string;
+    @IsDate()
+    openDate?: Date;
     @IsString()
-    deviceID: string; 
+    deviceID?: string; 
     @IsString()
-    employeeID: string;     
+    repairsID?: string; 
+    @IsString()
+    employeeID?: string;     
+    @IsBoolean()
+    isOpen?: boolean;
+    @IsDate()
+    dateClose?: Date;
+
 }

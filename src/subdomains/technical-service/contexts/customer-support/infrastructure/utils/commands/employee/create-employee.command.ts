@@ -1,17 +1,21 @@
-import { IsString } from 'class-validator';
+import { IsBoolean, IsString } from 'class-validator';
 import { ICreateEmployeeCommand } from '../../../../domain/interfaces/commands/employee';
+
 
 export class CreateEmployeeCommand implements ICreateEmployeeCommand{
     
     @IsString()    
-    employeeID: string;
+    employeeID?: string;
 
     @IsString()    
-    employeeFullname: string;
+    employeeFullname?: string;
     
     @IsString()
-    employeeEmail: string;
+    employeeEmail?: string;
 
     @IsString()
     employeeRoleID?: string;
+
+    @IsBoolean()
+    employeeIsActive: boolean;
 }

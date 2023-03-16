@@ -34,7 +34,7 @@ export class InvoiceRepository implements IRepository<InvoiceMySqlEntity>{
         const result = await this.repository.findOneBy({ invoiceID, deletedAt: undefined });
 
         if (!result) throw new BadRequestException(`Invoice with id: ${invoiceID} not found`);
-
+        
         return result;
     }
    

@@ -49,7 +49,7 @@ export class MarkInvoiceAsPaidUseCase<
 
         const VO = this.createValueObject(command);
 
-        this.validateValueObject(VO);
+   //TODO: reinstalar esto ->     this.validateValueObject(VO);
 
         const entity = this.createInvoiceEntity(VO);
 

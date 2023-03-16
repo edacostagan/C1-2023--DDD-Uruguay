@@ -1,9 +1,8 @@
 import { EmployeeDomainEntityBase } from "../../entities/employee/employee.domain-entity";
-import { IChangeEmployeeMailCommand, IChangeEmployeeStatusCommand } from '../../interfaces/commands/employee';
 
 export interface IEmployeeDomainService{
 
-    CreateEmployee(employeeData: EmployeeDomainEntityBase) : Promise < EmployeeDomainEntityBase | null >; // ICreateEmployeeCommand
+    CreateEmployee(employeeData: EmployeeDomainEntityBase) : Promise < EmployeeDomainEntityBase | null >; 
 
     ChangeEmployeeEmail(data: EmployeeDomainEntityBase) : Promise < boolean >;
 

@@ -6,7 +6,7 @@ import { IsBoolean, IsUUID, IsValidDate } from '../../../../../../../libs/valida
 
 export class SupportTicketDomainEntityBase implements ISupportTicketDomainEntity{
     ticketID?: string | UUIDValueObject;
-    dateOpen?: Date | DateValueObject;
+    openDate?: Date | DateValueObject;
     deviceID?: string | UUIDValueObject;
     repairsID?: string | UUIDValueObject;
     employeeID?: string | UUIDValueObject;
@@ -21,7 +21,8 @@ export class SupportTicketDomainEntityBase implements ISupportTicketDomainEntity
         if(_data?.ticketID && IsUUID(_data?.ticketID)) this.ticketID = _data.ticketID;
         else this.ticketID = uuid();
 
-        if(_data?.dateOpen ) this.dateOpen = _data.dateOpen; //&& IsValidDate(_data?.dateOpen)
+        if(_data?.openDate ) this.openDate = _data.openDate; //&& IsValidDate(_data?.dateOpen)
+        else this.openDate = new Date();
 
         if (_data?.deviceID && IsUUID(_data?.deviceID)) this.deviceID = _data.deviceID;
 
@@ -30,8 +31,10 @@ export class SupportTicketDomainEntityBase implements ISupportTicketDomainEntity
         if (_data?.employeeID && IsUUID(_data?.employeeID)) this.employeeID = _data.employeeID;
 
         if(_data?.dateClose) this.dateClose = _data.dateClose; // && IsValidDate(_data?.dateClose)
+        
 
         if (_data?.isOpen && IsBoolean(_data?.isOpen)) this.isOpen = _data.isOpen;
+        else this.isOpen = true;
 
         this.createdAt = new Date();
     }

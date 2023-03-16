@@ -7,7 +7,7 @@ export class SupportTicketMySqlEntity extends SupportTicketDomainEntityBase{
     @PrimaryGeneratedColumn('uuid')
     ticketID?:  string;
 
-    @Column()
+    @Column({default:null})
     dateOpen?: Date;
 
     @Column()
@@ -22,7 +22,7 @@ export class SupportTicketMySqlEntity extends SupportTicketDomainEntityBase{
     @Column({default:true})
     isOpen?: boolean;
 
-    @Column()
+    @Column({default:null})
     dateClose?: Date;
 
     @CreateDateColumn()

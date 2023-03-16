@@ -1,10 +1,9 @@
 import { EmployeeDomainEntityBase } from "../../../../../entities/employee/employee.domain-entity";
 import { EmployeeCreatedEventPublisherBase } from "../../../../../events/publishers/employee";
-import { ICreateEmployeeCommand } from "../../../../../interfaces";
 import { IEmployeeDomainService } from "../../../../../services/employee";
 
 export const CreateEmployee = async (
-    employeeData: EmployeeDomainEntityBase,// ICreateEmployeeCommand,
+    employeeData: EmployeeDomainEntityBase,
     employeeService: IEmployeeDomainService,
     employeeCreatedEventPublisherBase: EmployeeCreatedEventPublisherBase
 ): Promise< EmployeeDomainEntityBase | null > => {

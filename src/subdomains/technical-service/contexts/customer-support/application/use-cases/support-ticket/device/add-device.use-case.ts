@@ -1,13 +1,14 @@
+import { ValueObjectException, IUseCase, ValueObjectErrorHandler} from '@sofka';
+
 import { IAddDeviceCommand } from '../../../../domain/interfaces/commands/support-ticket/device/add-device.command';
-import { ValueObjectErrorHandler } from '../../../../../../../../libs/sofka/bases/value-object-error-handler.base';
-import { IUseCase } from '../../../../../../../../libs/sofka/interface/use-case.interface';
+
 import { SupportTicketAggregate } from '../../../../domain/aggregates/support-ticket/support-ticket.aggregate';
 import { IDeviceDomainService } from '../../../../domain/services/support-ticket/device.domain-service';
 import { DeviceAddedEventPublisherBase } from '../../../../domain/events/publishers/support-ticket/device/device-added.event-publisher';
 import { IDeviceDomainEntity } from '../../../../domain/entities/interfaces/support-ticket/device.domain-entity.interface';
-import { DeviceTypeValueObject } from '../../../../domain/value-objects/device/device-type.value-object';
-import { IssueValueObject } from '../../../../domain/value-objects/device/issue.value-object';
-import { ValueObjectException } from 'src/libs';
+
+import { IssueValueObject, DeviceTypeValueObject } from '../../../../domain/value-objects';;
+
 import { DeviceDomainEntityBase } from '../../../../domain/entities/support-ticket/device.domain-entity/device.domain-entity';
 import { IDeviceAddedResponse } from '../../../../domain/interfaces/responses/support-ticket/device/device-added.response';
 
@@ -15,7 +16,6 @@ export class AddDeviceUseCase<
     Command extends IAddDeviceCommand = IAddDeviceCommand,
     Response extends IDeviceAddedResponse = IDeviceAddedResponse
 > extends ValueObjectErrorHandler implements IUseCase<Command, Response> {
-
 
     private readonly supportTicketAggregateRoot: SupportTicketAggregate;
 
@@ -51,7 +51,7 @@ export class AddDeviceUseCase<
 
         const VO = this.createValueObject(command);
 
-        this.validateValueObject(VO);
+    //TODO: reactivar esto - >    this.validateValueObject(VO);
 
         const entity = this.createDeviceEntityDomain(VO);
 
@@ -122,7 +122,7 @@ export class AddDeviceUseCase<
 
         return new DeviceDomainEntityBase({
             deviceType: deviceType.valueOf(),
-            issues: issues
+            issues: issues.valueOf()
         })
     }
 

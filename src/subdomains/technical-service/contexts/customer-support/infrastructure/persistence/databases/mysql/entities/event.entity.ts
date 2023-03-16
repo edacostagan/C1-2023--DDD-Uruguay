@@ -9,7 +9,7 @@ export class EventMySqlEntity {
     @Column()
     type: string;
 
-    @Column()
+    @Column('longtext')
     data: string;
 
     @CreateDateColumn()

@@ -9,6 +9,7 @@ import { DateValueObject, UUIDValueObject } from '../../../domain/value-objects/
 import { ValueObjectException, IUseCase, ValueObjectErrorHandler } from '@sofka';
 import { ISupportTicketOpenedResponse } from '../../../domain/interfaces/responses/support-ticket/new-ticket-opened.response';
 import { SupportTicketDomainEntityBase } from '../../../domain/entities/support-ticket/service-ticket.domain-entity';
+import { TrueFalseValueObject } from '../../../domain/value-objects/common/true-false/true-false.value-object';
 
 
 export class OpenNewTicketUseCase<
@@ -67,16 +68,20 @@ export class OpenNewTicketUseCase<
      */
     createValueObject(command: Command): ISupportTicketEntity {
 
-        const dateOpen = new DateValueObject(command.openDate);
+        const openDate = new DateValueObject(command.openDate);
         const deviceID = new UUIDValueObject(command.deviceID);
+        const repairsID = new UUIDValueObject(command.repairsID);
         const employeeID = new UUIDValueObject(command.employeeID);
-        const isOpen = true;
+        const isOpen = new TrueFalseValueObject(command.isOpen);
+        const dateClose = new DateValueObject(command.dateClose);
 
         return {
-            dateOpen,
+            openDate,
             deviceID,
+            repairsID,
             employeeID,
-            isOpen
+            isOpen,
+            dateClose
         }
     }
 
@@ -90,15 +95,17 @@ export class OpenNewTicketUseCase<
     validateValueObject(VO: ISupportTicketEntity): void {
 
         const {
-            dateOpen,
+            openDate,
+            deviceID,
+            repairsID,
             employeeID,
-            deviceID,            
-            isOpen
+            isOpen,
+            dateClose
         } = VO
 
         // validates ticket open date
-        if (dateOpen instanceof DateValueObject && dateOpen.hasErrors())
-            this.setErrors(dateOpen.getErrors());
+        if (openDate instanceof DateValueObject && openDate.hasErrors())
+            this.setErrors(openDate.getErrors());
 
         // vslidates device id
         if (deviceID instanceof UUIDValueObject && deviceID.hasErrors())
@@ -126,18 +133,22 @@ export class OpenNewTicketUseCase<
      */
     createSupportTicketEntityDomain(VO: ISupportTicketEntity): SupportTicketDomainEntityBase {
         const {
-            dateOpen,
+            openDate,
+            deviceID,
+            repairsID,
             employeeID,
-            deviceID,            
-            isOpen
+            isOpen,
+            dateClose
         } = VO;
         
         return new SupportTicketDomainEntityBase({
 
-            dateOpen: dateOpen.valueOf() as Date,
-            employeeID: employeeID.valueOf(),
+            openDate: openDate.valueOf() as Date,
             deviceID: deviceID.valueOf(),
-            isOpen: isOpen.valueOf()
+            repairsID: repairsID.valueOf(),
+            employeeID: employeeID.valueOf(),            
+            isOpen: isOpen.valueOf(),
+            dateClose: dateClose.valueOf() as Date,
         })
     }
 

@@ -46,7 +46,7 @@ export class CreateEmployeeUseCase <
 
         const VO = this.createValueObject(command);
 
-        //this.validateValueObject(VO);
+        //TODO: reinstalar esto -> this.validateValueObject(VO);
 
         const entity = this.createEntityEmployeeDomain(VO);
 
@@ -63,7 +63,7 @@ export class CreateEmployeeUseCase <
      */
     createValueObject(command: Command): IEmployeeDomainEntity {
 
-        const employeeName = new FullnameValueObject(command.employeeFullname);
+        const employeeName = new FullnameValueObject(command.employeeName);
         const employeeEmail = new EmailValueObject(command.employeeEmail);
         const employeeRoleId = new UUIDValueObject(command.employeeRoleID);
         const employeeIsActive = true;
