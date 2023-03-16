@@ -1,4 +1,8 @@
 export const StringSmallerThanMinLength = (value: string, minLength: number) : boolean =>{
+    
+    let result = false;
 
-    return value.length < minLength ? true : false;
+    if(value && value.length < minLength) result = true;
+
+    return result;
 }

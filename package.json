@@ -76,7 +76,7 @@
     "moduleNameMapper":{
       "@sofka":"<rootDir>/sofka",
       "@validations":"<rootDir>/src/validations"
-
     }
+    
   }
 }

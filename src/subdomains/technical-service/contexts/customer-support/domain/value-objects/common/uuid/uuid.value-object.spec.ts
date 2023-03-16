@@ -1,5 +1,6 @@
 import { IsUUID } from "../../../../../../../../../src/libs/validations";
 import { UUIDValueObject } from ".";
+import { v4 as uuid } from "uuid";
 
 describe('UUIDValueObject', () => {
 
@@ -23,10 +24,10 @@ describe('UUIDValueObject', () => {
     });
 
 
-    it('checks the value of the instance', () => {       
+    it('checks if the value is a valid UUID v4 instance', () => {       
         //Arrange
         const expected = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/i;      
-
+        
         //Act        
         const result = VO.valueOf();   
 
@@ -36,6 +37,30 @@ describe('UUIDValueObject', () => {
         expect(true).toBe(IsUUID(result)); //using validation library
     })
  
+    it(' should return False if the instance has not any errors', () =>{
+        //Arrange
+        const value = uuid();         // correct UUID value
+
+        //Act
+        const result = new UUIDValueObject(value);
+
+        //Assert
+        expect(result).toBeTruthy();
+
+    })
+
+    it(' should return true if the instance has any errors', () =>{
+        //Arrange
+        const value = "randomValueNotUUID";                // incorrect UUID value
+
+        //Act
+        const result = new UUIDValueObject(value);
+
+        //Assert
+        expect(result).toBeTruthy();
+
+    })
+
     //After every tests
     afterEach(() => {
         jest.clearAllMocks();

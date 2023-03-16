@@ -1,4 +1,4 @@
-import { IsEmptyOrNull } from "src/libs/validations/checkIsEmptyOrNull.validation";
+import { IsEmptyOrNull } from "../../../../../../../../libs/validations/checkIsEmptyOrNull.validation";
 import { ValueObjectBase } from "../../../../../../../../libs/sofka/bases/object-value.base";
 import { IsEmail } from "../../../../../../../../libs/validations/email.validation";
 import { StringBiggerThanMaxLength } from '../../../../../../../../libs/validations/string-max-length.validation';
