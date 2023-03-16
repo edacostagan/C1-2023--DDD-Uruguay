@@ -74,8 +74,8 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "moduleNameMapper":{
-      "@sofka":"<rootDir>/sofka",
-      "@validations":"<rootDir>/src/validations"
+      "@sofka":"<rootDir>/libs/sofka",
+      "@validations":"<rootDir>/libs/validations"
     }
     
   }

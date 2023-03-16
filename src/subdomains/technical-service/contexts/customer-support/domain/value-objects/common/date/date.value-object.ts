@@ -1,6 +1,5 @@
 import { ValueObjectBase } from '@sofka';
-import { IsEmptyOrNull } from '../../../../../../../../libs/validations/checkIsEmptyOrNull.validation';
-import { IsValidDate } from '../../../../../../../../libs/validations/date.validation';
+import { IsValidDate, IsEmptyOrNull } from '@validations';
 
 export class DateValueObject extends ValueObjectBase< Date > {
 

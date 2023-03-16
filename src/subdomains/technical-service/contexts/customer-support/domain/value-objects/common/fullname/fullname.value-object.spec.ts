@@ -1,9 +1,9 @@
-import { IsEmail } from "@validations";
-import { EmailValueObject } from ".";
+import { IsValidFullname } from "@validations";
+import { FullnameValueObject } from ".";
 
-describe('EmailValueObject', () => {
+describe('FullnameValueObject', () => {
 
-    let VO: EmailValueObject;
+    let VO: FullnameValueObject;
 
     //Before all tests
     beforeAll(() => { });
@@ -11,10 +11,10 @@ describe('EmailValueObject', () => {
     //Before every tests
     beforeEach(() => {
       //Arrange
-      const value = "test@domain.com";         // valid email value
+      const value = "Firstname Lastname";  // valid name
 
       //Act
-      VO = new EmailValueObject(value);
+      VO = new FullnameValueObject(value);
 
      });
 
@@ -27,7 +27,7 @@ describe('EmailValueObject', () => {
     });
 
 
-    it('checks if the value is a valid email VO', () => {                      
+    it('checks if the value is a valid fullname VO', () => {                      
         //Arrange      
         const expected = true;
 
@@ -35,16 +35,16 @@ describe('EmailValueObject', () => {
         const result = VO.valueOf();   
 
         //Assert
-        expect(expected).toBe(IsEmail(result)); //using validation library
+        expect(expected).toBe(IsValidFullname(result)); //using validation library
     })
 
  
     it(' should return False if the instance has not any errors', () =>{
         //Arrange
-        const value = "test@domain.com";         // valid email value
+        const value = "Firstname Lastname";         // valid Name
 
         //Act
-        const result = new EmailValueObject(value);
+        const result = new FullnameValueObject(value);
 
         //Assert
         expect(result).toBeTruthy();
@@ -53,10 +53,10 @@ describe('EmailValueObject', () => {
 
     it(' should return true if the instance has any errors', () =>{
         //Arrange
-        const value = "test@domain";                // incorrect email value
+        const value = "1nvalid N@me";                // incorrect fullname
 
         //Act
-        const result = new EmailValueObject(value);
+        const result = new FullnameValueObject(value);
 
         //Assert
         expect(result).toBeTruthy();

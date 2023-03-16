@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
-import { ValueObjectBase } from '../../../../../../../../libs/sofka/bases/object-value.base';
-import { IsUUID, IsEmptyOrNull, StringBiggerThanMaxLength } from '../../../../../../../../libs/validations';
+import { ValueObjectBase } from '@sofka';
+import { IsUUID, IsEmptyOrNull, StringBiggerThanMaxLength } from '@validations';
 
 export class UUIDValueObject extends ValueObjectBase<string>{
 

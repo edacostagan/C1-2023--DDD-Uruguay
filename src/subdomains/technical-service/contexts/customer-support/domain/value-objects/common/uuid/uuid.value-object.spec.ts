@@ -1,4 +1,4 @@
-import { IsUUID } from "../../../../../../../../../src/libs/validations";
+import { IsUUID } from "@validations";
 import { UUIDValueObject } from ".";
 import { v4 as uuid } from "uuid";
 
