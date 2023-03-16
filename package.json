@@ -26,6 +26,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/microservices": "^9.3.9",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.2.1",
     "@nestjs/typeorm": "^9.0.1",
     "class-validator": "^0.14.0",
     "kafkajs": "^2.2.4",
@@ -73,10 +74,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
-    "moduleNameMapper":{
-      "@sofka":"<rootDir>/libs/sofka",
-      "@validations":"<rootDir>/libs/validations"
+    "moduleNameMapper": {
+      "@sofka": "<rootDir>/libs/sofka",
+      "@validations": "<rootDir>/libs/validations"
     }
-    
   }
 }
