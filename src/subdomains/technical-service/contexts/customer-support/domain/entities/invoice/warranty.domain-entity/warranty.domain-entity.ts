@@ -1,9 +1,7 @@
 import { v4 as uuid } from "uuid";
-
-import { UUIDValueObject, DateValueObject, } from "../../../value-objects/common";
-import { WarrantyStatusValueObject } from "../../../value-objects/warranty/warranty-status.value-object";
-import { IWarrantyDomainEntity } from '../../interfaces/invoice/warranty.domain-entity.interface';
-import { IsUUID } from '../../../../../../../../libs/validations/is-uuid.validation';
+import { WarrantyStatusValueObject, UUIDValueObject, DateValueObject, NoteValueObject, } from "../../../value-objects";
+import { IWarrantyDomainEntity } from '../../interfaces/invoice';
+import { IsUUID } from '@validations';
 
 
 export class WarrantyDomainEntityBase implements IWarrantyDomainEntity {
@@ -13,6 +11,7 @@ export class WarrantyDomainEntityBase implements IWarrantyDomainEntity {
     startDate?: Date | DateValueObject;
     endDate?: Date | DateValueObject;    
     warrantyStatus?: string | WarrantyStatusValueObject;
+    warrantyReason?: string | NoteValueObject;
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date;
@@ -27,6 +26,8 @@ export class WarrantyDomainEntityBase implements IWarrantyDomainEntity {
         if(_data?.endDate) this.endDate = _data.endDate;       
 
         if(_data?.warrantyStatus) this.warrantyStatus = _data.warrantyStatus;
+
+        if(_data?.warrantyReason) this.warrantyReason = _data.warrantyReason;
 
         this.createdAt = new Date();
     }    

@@ -14,6 +14,7 @@ import { UUIDValueObject, WarrantyStatusValueObject } from '../../../../domain/v
 import { ValueObjectException, ValueObjectErrorHandler, IUseCase } from '@sofka';
 
 import { WarrantyDomainEntityBase } from '../../../../domain/entities/invoice/warranty.domain-entity';
+import { NoteValueObject } from '../../../../domain/value-objects/common/note/note.value-object';
 
 
 
@@ -27,7 +28,7 @@ export class ChangeWarrantyStatusUseCase<
     constructor(
         private readonly warrantyService: IWarrantyDomainService,
         private readonly warrantyStatusChangedEventPublisherBase: WarrantyStatusChangedEventPublisherBase
-    ){
+    ) {
         super();
         this.invoiceAggregateRoot = new InvoiceAggregate({
             warrantyService,
@@ -47,17 +48,17 @@ export class ChangeWarrantyStatusUseCase<
      * @return {*}  {Promise <boolean>}
      * @memberof ChangeWarrantyStatusUseCase
      */
-    executeCommand(command: Command): Promise <boolean> {
-        
+    executeCommand(command: Command): Promise<boolean> {
+
         const VO = this.createValueObject(command);
 
         this.validateValueObject(VO);
 
         const entity = this.createWarrantyEntity(VO);
-        
+
         return this.executeChangeWarrantyStatusAggregateRoot(entity);
     }
-   
+
     /**
      * Generates a Warranty entity type with only the needed values (warrantyStatus)
      *
@@ -66,13 +67,15 @@ export class ChangeWarrantyStatusUseCase<
      * @memberof ChangeWarrantyStatusUseCase
      */
     createValueObject(command: Command): IWarrantyDomainEntity {
-        
-        const warrantyID = new UUIDValueObject(command.warrantyID);
-        const warrantyStatus = command.warrantyStatus;        
 
-        return{
+        const warrantyID = new UUIDValueObject(command.warrantyID);
+        const warrantyStatus = command.warrantyStatus;
+        const warrantyReason = new NoteValueObject(command.warrantyReason);
+
+        return {
             warrantyID,
-            warrantyStatus            
+            warrantyStatus,
+            warrantyReason
         }
     }
 
@@ -84,25 +87,31 @@ export class ChangeWarrantyStatusUseCase<
      * @memberof ChangeWarrantyStatusUseCase
      */
     validateValueObject(VO: IWarrantyDomainEntity) {
-        
+
         const {
             warrantyID,
-            warrantyStatus            
+            warrantyStatus,
+            warrantyReason
+
         } = VO;
 
         // validates warrantyID
         if (warrantyID instanceof UUIDValueObject && warrantyID.hasErrors())
-        this.setErrors(warrantyID.getErrors());
+            this.setErrors(warrantyID.getErrors());
 
-        // validates isPaid
+        // validates warrantyStatus
         if (warrantyStatus instanceof WarrantyStatusValueObject && warrantyStatus.hasErrors())
-        this.setErrors(warrantyStatus.getErrors());
+            this.setErrors(warrantyStatus.getErrors());
+
+        // validates warrantyReason
+        // if (warrantyReason instanceof NoteValueObject && warrantyReason.hasErrors())
+        // this.setErrors(warrantyReason.getErrors());
 
         if (this.hasErrors() === true)
-        throw new ValueObjectException(
-            'ChangeWarrantyStatusUseCase command execution return some errors!',
-            this.getErrors(),
-        );
+            throw new ValueObjectException(
+                'ChangeWarrantyStatusUseCase command execution return some errors!',
+                this.getErrors(),
+            );
     }
 
 
@@ -114,15 +123,17 @@ export class ChangeWarrantyStatusUseCase<
      * @memberof ChangeWarrantyStatusUseCase
      */
     createWarrantyEntity(VO: IWarrantyDomainEntity): WarrantyDomainEntityBase {
-     
+
         const {
             warrantyID,
-            warrantyStatus            
+            warrantyStatus, 
+            warrantyReason
         } = VO;
 
-        return new WarrantyDomainEntityBase ({
+        return new WarrantyDomainEntityBase({
             warrantyID: warrantyID.valueOf(),
-            warrantyStatus: warrantyStatus
+            warrantyStatus: warrantyStatus.valueOf() as string,
+            warrantyReason: warrantyReason.valueOf()
         })
     }
 
@@ -137,7 +148,7 @@ export class ChangeWarrantyStatusUseCase<
      */
     executeChangeWarrantyStatusAggregateRoot(
         entity: WarrantyDomainEntityBase): Promise<boolean> {
-        
-            return this.invoiceAggregateRoot.ChangeWarrantyStatus(entity);
+
+        return this.invoiceAggregateRoot.ChangeWarrantyStatus(entity);
     }
 }

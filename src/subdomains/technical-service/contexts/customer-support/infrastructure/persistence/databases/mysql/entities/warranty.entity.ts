@@ -13,6 +13,9 @@ export class WarrantyMySqlEntity extends WarrantyDomainEntityBase{
     @Column()
     warrantyStatus?: string;
 
+    @Column({default:null})
+    warrantyReason?: string;
+    
     @Column()
     endDate?: Date;
 

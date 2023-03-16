@@ -7,5 +7,5 @@ export class ChangeWarrantyStatusCommand implements IChangeWarrantyStatusCommand
     @IsString()
     warrantyStatus: string;
     @IsString()
-    reason: string;    
+    warrantyReason: string;    
 }
