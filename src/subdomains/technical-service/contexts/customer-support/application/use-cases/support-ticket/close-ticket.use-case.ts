@@ -50,7 +50,9 @@ export class CloseSupportTicketUseCase<
     executeCommand(command: Command) {
         
         const VO = this.createValueObject(command);
-        this.validatesValueObject(VO);
+   
+   //TODO: Reactivar esto ->     this.validatesValueObject(VO);
+   
         const entity = this.createSupportTicketEntity(VO);    
         return this.executeCloseSupportTicketAggregateRoot(entity);
     }

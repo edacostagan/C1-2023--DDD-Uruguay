@@ -6,6 +6,7 @@ import { EmployeeCreatedEventPublisherBase } from '../../../domain/events/';
 import { IEmployeeDomainEntity } from '../../../domain/entities/interfaces/employee/';
 import { UUIDValueObject, FullnameValueObject, EmailValueObject } from '../../../domain/value-objects/';
 import { EmployeeDomainEntityBase } from '../../../domain/entities/employee/employee.domain-entity';
+import { TrueFalseValueObject } from '../../../domain/value-objects/common/true-false/true-false.value-object';
 
 
 export class CreateEmployeeUseCase <
@@ -63,12 +64,14 @@ export class CreateEmployeeUseCase <
      */
     createValueObject(command: Command): IEmployeeDomainEntity {
 
+        const employeeID = new UUIDValueObject(command.employeeID);
         const employeeName = new FullnameValueObject(command.employeeName);
         const employeeEmail = new EmailValueObject(command.employeeEmail);
         const employeeRoleId = new UUIDValueObject(command.employeeRoleID);
-        const employeeIsActive = true;
+        const employeeIsActive = new TrueFalseValueObject(command.employeeIsActive);
 
         return {
+            employeeID,
             employeeName,
             employeeEmail,
             employeeRoleId,
@@ -121,6 +124,7 @@ export class CreateEmployeeUseCase <
      */
     private createEntityEmployeeDomain(VO: IEmployeeDomainEntity): EmployeeDomainEntityBase {
         const {
+            employeeID,
             employeeName,
             employeeEmail,
             employeeRoleId,
@@ -128,7 +132,7 @@ export class CreateEmployeeUseCase <
         } = VO;
 
         return new EmployeeDomainEntityBase({
-
+            employeeID:employeeID.valueOf(),
             employeeName: employeeName.valueOf(),
             employeeEmail: employeeEmail.valueOf(),
             employeeRoleId: employeeRoleId.valueOf(),

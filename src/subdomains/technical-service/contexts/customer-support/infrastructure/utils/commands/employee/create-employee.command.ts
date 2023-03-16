@@ -8,7 +8,7 @@ export class CreateEmployeeCommand implements ICreateEmployeeCommand{
     employeeID?: string;
 
     @IsString()    
-    employeeFullname?: string;
+    employeeName?: string;
     
     @IsString()
     employeeEmail?: string;
@@ -17,5 +17,5 @@ export class CreateEmployeeCommand implements ICreateEmployeeCommand{
     employeeRoleID?: string;
 
     @IsBoolean()
-    employeeIsActive: boolean;
+    employeeIsActive?: boolean;
 }

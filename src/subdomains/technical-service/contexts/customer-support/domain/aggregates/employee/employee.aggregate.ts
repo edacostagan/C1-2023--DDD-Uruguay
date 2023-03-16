@@ -1,12 +1,5 @@
 import { AggregateRootException } from 'src/libs/sofka/exceptions';
 
-import {    
-    IChangeEmployeeMailCommand,
-    IChangeEmployeeStatusCommand,
-    IChangeRoleDescriptionCommand,
-    ICreateRoleCommand,
-} from '../../interfaces';
-
 import { IEmployeeDomainService, IRoleDomainService } from '../../services/employee';
 
 import {
@@ -78,7 +71,7 @@ export class EmployeeAggregate implements IEmployeeDomainService, IRoleDomainSer
      * @return {*}  {Promise<boolean>}
      * @memberof EmployeeAggregate
      */
-    async CreateEmployee(employeeData: EmployeeDomainEntityBase ): Promise< EmployeeDomainEntityBase | null > { //ICreateEmployeeCommand
+    async CreateEmployee(employeeData: EmployeeDomainEntityBase ): Promise< EmployeeDomainEntityBase | null > { 
 
         if (!this.employeeService) {
             throw new AggregateRootException('InvoiceAggregate: "EmployeeService" is not defined!');
