@@ -14,6 +14,16 @@ import { SupportTicketDomainEntityBase } from '../../../domain/entities/support-
 
 
 
+/**
+ * Implements the close ticket use case
+ *
+ * @export
+ * @class CloseSupportTicketUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class CloseSupportTicketUseCase<
     Command extends ICloseTicketCommand = ICloseTicketCommand,
     Response extends ISupportTicketClosedResponse = ISupportTicketClosedResponse

@@ -8,6 +8,17 @@ import { EmployeeEmailChangedEventPublisherBase } from '../../../domain/events/p
 import { IEmployeeDomainEntity } from '../../../domain/entities/interfaces/employee';
 import { EmployeeDomainEntityBase } from '../../../domain/entities/employee/employee.domain-entity';
 
+
+/**
+ * Implements the Change employee email use case
+ *
+ * @export
+ * @class ChangeEmployeeEmailUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeEmployeeEmailUseCase<
     Command extends IChangeEmployeeMailCommand = IChangeEmployeeMailCommand,
     Response extends IEmployeeEmailChangedResponse = IEmployeeEmailChangedResponse

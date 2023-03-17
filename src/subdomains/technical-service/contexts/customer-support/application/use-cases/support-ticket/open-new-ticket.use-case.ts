@@ -12,6 +12,17 @@ import { SupportTicketDomainEntityBase } from '../../../domain/entities/support-
 import { TrueFalseValueObject } from '../../../domain/value-objects/common/true-false/true-false.value-object';
 
 
+
+/**
+ * Implements the open new support ticket use case
+ *
+ * @export
+ * @class OpenNewTicketUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class OpenNewTicketUseCase<
     Command extends IOpenNewTicketCommand = IOpenNewTicketCommand,
     Response extends ISupportTicketOpenedResponse = ISupportTicketOpenedResponse

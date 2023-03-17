@@ -17,6 +17,16 @@ import { NoteValueObject } from '../../../../domain/value-objects/common/note/no
 
 
 
+/**
+ *Implements the change Warranty end date use case
+ *
+ * @export
+ * @class ChangeWarrantyEndDateUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeWarrantyEndDateUseCase<
     Command extends IChangeWarrantyEndDateCommand = IChangeWarrantyEndDateCommand,
     Response extends IWarrantyEndDateChangedResponse = IWarrantyEndDateChangedResponse

@@ -11,6 +11,17 @@ import { ICustomerDomainEntity } from '../../../../domain/entities/interfaces';
 import { CustomerDomainEntityBase } from '../../../../domain/entities/invoice/customer.domain-entity';
 
 
+
+/**
+ * Implements the change customer phone number use case
+ *
+ * @export
+ * @class ChangeCustomerPhoneUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeCustomerPhoneUseCase <
     Command extends IChangeCustomerPhoneCommand = IChangeCustomerPhoneCommand,
     Response extends ICustomerPhoneChangedResponse = ICustomerPhoneChangedResponse

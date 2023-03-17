@@ -8,6 +8,17 @@ import { IRoleDomainEntity } from '../../../../domain/entities/interfaces/employ
 import { RoleValueObject, NoteValueObject } from '../../../../domain/value-objects/';
 import { RoleDomainEntityBase } from '../../../../domain/entities/employee/role.domain-entity';
 
+
+/**
+ * Implements the Create Role Use case
+ *
+ * @export
+ * @class CreateRoleUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class CreateRoleUseCase<
     Command extends ICreateRoleCommand = ICreateRoleCommand,
     Response extends IRoleCreatedResponse = IRoleCreatedResponse

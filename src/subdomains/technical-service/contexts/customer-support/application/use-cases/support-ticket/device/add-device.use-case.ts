@@ -12,6 +12,17 @@ import { IssueValueObject, DeviceTypeValueObject } from '../../../../domain/valu
 import { DeviceDomainEntityBase } from '../../../../domain/entities/support-ticket/device.domain-entity/device.domain-entity';
 import { IDeviceAddedResponse } from '../../../../domain/interfaces/responses/support-ticket/device/device-added.response';
 
+
+/**
+ * Implements the Add device use case
+ *
+ * @export
+ * @class AddDeviceUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class AddDeviceUseCase<
     Command extends IAddDeviceCommand = IAddDeviceCommand,
     Response extends IDeviceAddedResponse = IDeviceAddedResponse

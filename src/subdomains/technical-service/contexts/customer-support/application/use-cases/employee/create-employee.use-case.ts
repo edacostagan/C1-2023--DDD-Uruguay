@@ -7,6 +7,16 @@ import { IEmployeeDomainEntity } from '../../../domain/entities/interfaces/emplo
 import { TrueFalseValueObject, UUIDValueObject, FullnameValueObject, EmailValueObject } from '../../../domain/value-objects/';
 import { EmployeeDomainEntityBase } from '../../../domain/entities/employee/employee.domain-entity';
 
+/**
+ * Implements the Create employee use case
+ *
+ * @export
+ * @class CreateEmployeeUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class CreateEmployeeUseCase <
     Command extends ICreateEmployeeCommand = ICreateEmployeeCommand,
     Response extends IEmployeeCreatedResponse = IEmployeeCreatedResponse,

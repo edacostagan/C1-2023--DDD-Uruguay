@@ -11,6 +11,16 @@ import { CustomerDomainEntityBase } from '../../../../domain/entities/invoice/cu
 
 
 
+/**
+ * Implements the change Customer email use case
+ *
+ * @export
+ * @class ChangeCustomerEmailUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeCustomerEmailUseCase<
     Command extends IChangeCustomerEmailCommand = IChangeCustomerEmailCommand,
     Response extends ICustomerEmailChangedResponse = ICustomerEmailChangedResponse

@@ -12,6 +12,17 @@ import { ValueObjectException, IUseCase, ValueObjectErrorHandler } from '@sofka'
 import { IInvoiceDomainService } from '../../../domain/services';
 
 
+
+/**
+ * Implements the  create customer use case
+ *
+ * @export
+ * @class CreateCustomerUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class CreateCustomerUseCase<
     Command extends ICreateCustomerCommand = ICreateCustomerCommand,
     Response extends ICustomerCreatedResponse = ICustomerCreatedResponse

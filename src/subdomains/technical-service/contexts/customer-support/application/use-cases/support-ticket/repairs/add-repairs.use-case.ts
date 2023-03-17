@@ -13,6 +13,17 @@ import { IRepairsDomainService } from '../../../../domain/services';
 import { RepairsAddedEventPublisherBase } from '../../../../domain/events/publishers/support-ticket/repairs/repairs-added.event-publisher';
 
 
+
+/**
+ * Implements the Add device use case
+ *
+ * @export
+ * @class AddRepairDetailsUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class AddRepairDetailsUseCase<
     Command extends IAddRepairsCommand = IAddRepairsCommand,
     Response extends IRepairsDetailsAddedResponse = IRepairsDetailsAddedResponse

@@ -10,6 +10,17 @@ import { EmployeeDomainEntityBase } from '../../../domain/entities/employee/empl
 
 
 
+
+/**
+ * Implements the change employee status use case
+ *
+ * @export
+ * @class ChangeEmployeeStatusUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeEmployeeStatusUseCase<
     Command extends IChangeEmployeeStatusCommand = IChangeEmployeeStatusCommand,
     Response extends IEmployeeStatusChangedResponse = IEmployeeStatusChangedResponse

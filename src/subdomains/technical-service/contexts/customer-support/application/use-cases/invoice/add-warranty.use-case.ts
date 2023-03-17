@@ -10,6 +10,17 @@ import { WarrantyDomainEntityBase } from '../../../domain/entities/invoice/warra
 import { IInvoiceDomainService } from '../../../domain/services';
 
 
+
+/**
+ * Implements the add warranty use case
+ *
+ * @export
+ * @class AddWarrantyUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class AddWarrantyUseCase<
     Command extends IAddWarrantyCommand = IAddWarrantyCommand,
     Response extends IWarrantyAddedResponse = IWarrantyAddedResponse

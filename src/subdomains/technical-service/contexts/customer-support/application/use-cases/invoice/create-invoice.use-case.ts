@@ -11,6 +11,17 @@ import { TrueFalseValueObject, AmountValueObject, UUIDValueObject, DateValueObje
 
 import { IInvoiceDomainEntity } from '../../../domain/entities/interfaces/invoice/invoice.domain-entity.interface';
 
+
+/**
+ * Implements the create invoice use case
+ *
+ * @export
+ * @class CreateInvoiceUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class CreateInvoiceUseCase<
     Command extends ICreateInvoiceCommand = ICreateInvoiceCommand,
     Response extends IInvoiceCreatedResponse = IInvoiceCreatedResponse

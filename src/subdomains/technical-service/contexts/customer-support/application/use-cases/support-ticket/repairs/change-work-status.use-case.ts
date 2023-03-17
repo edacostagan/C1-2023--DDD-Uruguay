@@ -13,6 +13,17 @@ import { RepairsDomainEntityBase } from '../../../../domain/entities/support-tic
 
 
 
+
+/**
+ * Implements the Change work status use case
+ *
+ * @export
+ * @class ChangeWorkStatusUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeWorkStatusUseCase<
     Command extends IChangeWorkStatusCommand = IChangeWorkStatusCommand,
     Response extends IWorkStatusChangedResponse = IWorkStatusChangedResponse

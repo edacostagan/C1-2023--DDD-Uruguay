@@ -12,6 +12,16 @@ import { IMarkInvoiceAsPaidCommand } from '../../../domain/interfaces/commands/i
 import { InvoiceDomainEntityBase } from '../../../domain/entities/invoice/invoice.domain-entity';
 
 
+/**
+ * Implements the  Mark invoice as paid use case
+ *
+ * @export
+ * @class MarkInvoiceAsPaidUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class MarkInvoiceAsPaidUseCase<
     Command extends IMarkInvoiceAsPaidCommand = IMarkInvoiceAsPaidCommand,
     Response extends IInvoiceMarkedAsPaidResponse = IInvoiceMarkedAsPaidResponse

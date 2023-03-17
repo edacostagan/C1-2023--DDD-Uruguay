@@ -18,6 +18,16 @@ import { NoteValueObject } from '../../../../domain/value-objects/common/note/no
 
 
 
+/**
+ * Implements the change warranty status
+ *
+ * @export
+ * @class ChangeWarrantyStatusUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeWarrantyStatusUseCase<
     Command extends IChangeWarrantyStatusCommand = IChangeWarrantyStatusCommand,
     Response extends IWarrantyStatusChangedResponse = IWarrantyStatusChangedResponse

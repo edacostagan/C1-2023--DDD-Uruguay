@@ -13,6 +13,16 @@ import { IRoleDomainService } from '../../../../domain/services';
 
 
 
+/**
+ * Implements the Change role description Use case
+ *
+ * @export
+ * @class ChangeRoleDescriptionUseCase
+ * @extends {ValueObjectErrorHandler}
+ * @implements {IUseCase<Command, Response>}
+ * @template Command
+ * @template Response
+ */
 export class ChangeRoleDescriptionUseCase<
     Command extends IChangeRoleDescriptionCommand = IChangeRoleDescriptionCommand,
     Response extends IRoleDescriptionChangedResponse = IRoleDescriptionChangedResponse
