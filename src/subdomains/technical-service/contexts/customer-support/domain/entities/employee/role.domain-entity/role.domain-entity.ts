@@ -4,6 +4,15 @@ import { IsUUID } from "@validations";
 import { UUIDValueObject, NoteValueObject, RoleValueObject } from "../../../value-objects";
 import { IRoleDomainEntity } from "../../interfaces/employee";
 
+
+/**
+ * Role entity
+ * 
+ *
+ * @export
+ * @class RoleDomainEntityBase
+ * @implements {IRoleDomainEntity}
+ */
 export class RoleDomainEntityBase implements IRoleDomainEntity {
     roleID?: string | UUIDValueObject;
     roleName?: string | RoleValueObject;

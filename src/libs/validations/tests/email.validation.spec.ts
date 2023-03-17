@@ -38,7 +38,7 @@ describe('IsEmail', () => {
     // Return False
     it('should be false', () => {
         //Arrange
-        const value = undefined;
+        const value = "mail@dom";
         const expected = false;
         //Act
         const result = validator(value);
