@@ -20,7 +20,7 @@ export class EmployeeDomainEntityBase implements IEmployeeDomainEntity{
         if(_data?.employeeID && IsUUID(_data?.employeeID)) this.employeeID = _data.employeeID;
         else this.employeeID = uuid();
 
-        if(_data?.employeeName && IsValidFullname(_data?.employeeName)) this.employeeName = _data.employeeName;
+        if(_data?.employeeName && IsValidFullname(_data?.employeeName as string)) this.employeeName = _data.employeeName;
 
         if(_data?.employeeEmail && IsEmail(_data?.employeeEmail as string)) this.employeeEmail = _data.employeeEmail;
 

@@ -1,6 +1,5 @@
-import { IsEmptyOrNull } from "src/libs/validations/checkIsEmptyOrNull.validation";
-import { ValueObjectBase } from "../../../../../../../../libs/sofka/bases/object-value.base";
-import { StringBiggerThanMaxLength } from '../../../../../../../../libs/validations/string-max-length.validation';
+import { StringBiggerThanMaxLength, IsEmptyOrNull } from "@validations";
+import { ValueObjectBase } from "@sofka";
 
 export class NoteValueObject extends ValueObjectBase<string> {
     

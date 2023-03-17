@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "set SCOPE=prod nest start",
+    "start": "set SCOPE=prod & nest start",
     "start:dev": "set SCOPE=dev & nest start --watch",
     "start:debug": "set SCOPE=dev & nest start --debug --watch",
     "start:prod": "set SCOPE=prod & node dist/main",

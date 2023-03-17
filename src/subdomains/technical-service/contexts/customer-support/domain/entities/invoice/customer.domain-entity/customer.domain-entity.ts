@@ -19,7 +19,7 @@ export class CustomerDomainEntityBase implements ICustomerDomainEntity {
         if(_data?.customerID && IsUUID(_data.customerID)) this.customerID = _data.customerID;
         else this.customerID = uuid();
 
-        if(_data?.customerName && IsValidFullname(_data?.customerName)) this.customerName = _data.customerName;
+        if(_data?.customerName && IsValidFullname(_data?.customerName as string)) this.customerName = _data.customerName;
 
         if(_data?.customerEmail && IsEmail(_data?.customerEmail as string)) this.customerEmail = _data.customerEmail;
 

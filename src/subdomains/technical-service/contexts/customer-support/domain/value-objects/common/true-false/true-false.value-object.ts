@@ -1,6 +1,5 @@
-import { IsBoolean } from '../../../../../../../../libs/validations/true-false.validation';
-import { ValueObjectBase } from '../../../../../../../../libs/sofka/bases/object-value.base';
-import { IsEmptyOrNull } from 'src/libs/validations/checkIsEmptyOrNull.validation';
+import { IsEmptyOrNull, IsBoolean } from '@validations';
+import { ValueObjectBase } from '@sofka';
 
 export class TrueFalseValueObject extends ValueObjectBase<boolean> {
 

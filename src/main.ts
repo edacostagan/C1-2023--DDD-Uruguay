@@ -8,17 +8,19 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Swagger
   const config = new DocumentBuilder()
     .setTitle('Technical Service From HELL!!!')
     .setDescription('The worst customer support you can pay!')
     .setVersion('1.0')
-    .addTag('What do you whant???')
+    .addTag('What do you want???')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
 
 
+  // Kafka
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.KAFKA,
     options: {
