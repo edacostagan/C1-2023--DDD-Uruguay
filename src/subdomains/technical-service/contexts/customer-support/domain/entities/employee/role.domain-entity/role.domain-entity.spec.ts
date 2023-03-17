@@ -1,4 +1,4 @@
-import { NoteValueObject, RoleValueObject, UUIDValueObject } from "../../../value-objects"
+ import { NoteValueObject, RoleValueObject, UUIDValueObject } from "../../../value-objects"
 import { RoleDomainEntityBase } from '.';
 
 describe('RoleDomainEntity', () => {
